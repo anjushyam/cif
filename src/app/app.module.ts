@@ -11,8 +11,6 @@ import { EmployeeComponent } from './employee/employee.component';
 import { PersonalDetailsComponent } from './employee/personal-details/personal-details.component';
 import { IdDetailsComponent } from './employee/id-details/id-details.component';
 import { FamilyDetailsComponent } from './employee/family-details/family-details.component';
-import { CurrentAddressComponent } from './employee/address-details/current-address/current-address.component';
-import { PermanentAddressComponent } from './employee/address-details/permanent-address/permanent-address.component';
 import { AuthorizationLetterComponent } from './employee/authorization-letter/authorization-letter.component';
 import { EmergencyDetailsComponent } from './employee/emergency-details/emergency-details.component';
 import { AdditionalInformationComponent } from './employee/additional-information/additional-information.component';
@@ -30,8 +28,6 @@ import { AddressDetailsComponent } from './employee/address-details/address-deta
     PersonalDetailsComponent,
     IdDetailsComponent,
     FamilyDetailsComponent,
-    CurrentAddressComponent,
-    PermanentAddressComponent,
     AuthorizationLetterComponent,
     EmergencyDetailsComponent,
     AdditionalInformationComponent,

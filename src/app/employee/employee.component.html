@@ -1,0 +1,80 @@
+<div class="row">
+  <form [formGroup]="employeeFormGroup" (ngSubmit)="addEmployee()" enctype="multipart/form-data">
+    <div class="row">
+      <div class="row">
+        <div class="avatar-centered text-center">
+          <input class="hidden"
+                 #uploader
+                 type="file"
+                 draggable="true"
+                 accept="image/*"
+                 (change)="showPreview($event)" />
+          <div class="avatar-block"
+               (click)="uploader.click()"
+               (dragover)="allowDrop($event)">
+            <span class="avatar-container" *ngIf="imageURL && imageURL !== ''; else imageText">
+              <img class="avatar" [src]="imageURL" [alt]="employeeFormGroup.value.name">
+            </span>
+            <ng-template #imageText>
+              <span class="avatar-placeholder">Photograph</span></ng-template>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="row form-group">
+          <label for="employeeName">Employee Name</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="employeeName"
+            name="employeeName"
+            pattern="[a-zA-Z ]*"
+            formControlName="employeeName"
+            autocomplete="off"
+            [ngClass]="{'has-error': (employeeName.dirty || employeeName.touched) && employeeName.invalid}" />
+          <span class="text-danger"
+                *ngIf="(employeeName.dirty || employeeName.touched) && employeeName.invalid && employeeName.errors.required">
+          Employee Name is required
+        </span>
+          <span class="text-danger"
+                *ngIf="(employeeName.dirty || employeeName.touched) && employeeName.invalid && employeeName.errors.pattern">
+          Only alphabets are allowed
+        </span>
+        </div>
+        <div class="row form-group">
+          <label for="employeeId">Employee ID</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="employeeId"
+            name="employeeId"
+            pattern="[a-zA-Z0-9]*"
+            formControlName="employeeId"
+            autocomplete="off"
+            [ngClass]="{'has-error': (employeeId.dirty || employeeId.touched) && employeeId.invalid}" />
+          <span class="text-danger"
+                *ngIf="(employeeId.dirty || employeeId.touched) && employeeId.invalid && employeeId.errors.required">
+          Employee ID is required
+        </span>
+          <span class="text-danger"
+                *ngIf="(employeeId.dirty || employeeId.touched) && employeeId.invalid && employeeId.errors.pattern">
+          Only alphabets and numbers are allowed
+        </span>
+        </div>
+      </div>
+    </div>
+    <app-personal-details></app-personal-details>
+    <app-id-details></app-id-details>
+    <app-family-details></app-family-details>
+    <app-address-details></app-address-details>
+    <app-education-details></app-education-details>
+    <app-employment-details [employeeFormGroup]="employeeFormGroup"></app-employment-details>
+    <app-emergency-details></app-emergency-details>
+    <app-authorization-letter></app-authorization-letter>
+    <div class="row">
+      <button type="submit" class="btn btn-default" [disabled]="employeeFormGroup.invalid">Submit</button>
+    </div>
+  </form>
+</div>

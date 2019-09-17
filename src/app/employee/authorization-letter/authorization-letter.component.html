@@ -1,0 +1,74 @@
+<div class="row">
+  <h4>Letter of Authorization</h4>
+  <p>I agree to provide copies of mark sheets and relevant certificates. I understand that employment
+  with Devon, is governed by Devon, Employment Policies as applicable, including satisfactory
+    information from a background check.</p>
+  <p>I hereby certify all of the statements made on the Devon, Employee Application Form are true
+  and complete and I understand that omission or misrepresentation of any fact may result in
+    refusal of employment or immediate dismissal.</p>
+  <p>As a condition ofCompany's consideration of my application for employment with the Company,
+  I hereby give my consent to Devon to investigate or cause to be investigated through any
+  third parties my personal, educational, pre or post-employment history, criminal and all
+  other checks relevant to the company. I understand that the background investigation will
+  include, but not be limited to, verification of all information given by me to the Company. I
+  confirm that the Company is entitled to share such investigation report with its clients to the
+  extent necessary in connection with the Services, which I may be required to provide to such
+  clients. I confirm and undertake that the Company shall incur no liability or obligation of any
+  nature whatsoever resulting from such investigation or sharing of the investigation results as above.</p>
+  <div [formGroup]="authorizationLetterForm">
+    <div class="row form-group">
+      <div class="col-xs-4">
+        <label for="fullName">Full Name</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="fullName"
+          name="fullName"
+          formControlName="fullName"
+          autocomplete="off"
+          [ngClass]="{'has-error': (fullName.dirty || fullName.touched) && fullName.invalid}" />
+        <span class="text-danger"
+              *ngIf="(fullName.dirty || fullName.touched) && fullName.invalid && fullName.errors.required">
+          House number is required
+        </span>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-xs-4">
+        <label for="signature">Signature</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="signature"
+          name="signature"
+          formControlName="signature"
+          autocomplete="off"
+          [ngClass]="{'has-error': (signature.dirty || signature.touched) && signature.invalid}" />
+        <span class="text-danger"
+              *ngIf="(signature.dirty || signature.touched) && signature.invalid && signature.errors.required">
+          Signature is required
+        </span>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-xs-4">
+        <label for="date">Date</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="date"
+          name="date"
+          formControlName="date"
+          autocomplete="off"
+          [ngClass]="{'has-error': (date.dirty || date.touched) && date.invalid}" />
+        <span class="text-danger"
+              *ngIf="(date.dirty || date.touched) && date.invalid && date.errors.required">
+          Date is required
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

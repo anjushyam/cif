@@ -1,0 +1,128 @@
+<div class="row">
+  <h4>EMPLOYMENT DETAILS</h4>
+  <ol class="text-danger">
+    <li>
+      <p>
+        Ensure that you are descriptive wherever necessary – e.g. If your previous company is closed
+        down, please do mention it. Location & Employee Code/ ID/ Number is mandatory. If your
+        previous employer did not provide the Employee ID, please mention and state reasons for the
+        same
+      </p>
+    </li>
+    <li>
+      <p>
+        Employment details should be of the company you are on payrolls of, not of a company
+        you are deputed to on an assignment with. In case you are showing employments
+        experience in a skill enabling or professional Training institute, the same should only be
+        shown if you were on the payrolls of such an institute.
+      </p>
+    </li>
+  </ol>
+  <div [formGroup]="employeeFormGroup">
+    <div class="row form-group">
+      <div formArrayName="previousEmployers">
+        <div class="col-xs-4" *ngFor="let employer of employersControls(); let i = index" >
+          <div formGroupName="{{i}}">
+            <label>Employer {{ i+1 }}</label>
+            <div class="row form-group">
+              <label>Organization Name</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="organizationName"
+                autocomplete="off"/>
+            </div>
+            <div class="row form-group">
+              <label>Address (Branch Name)</label>
+              <textarea
+                class="form-control"
+                formControlName="address">
+              </textarea>
+            </div>
+            <div class="row form-group">
+              <label>Employee ID</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="employeeId"
+                autocomplete="off"/>
+            </div>
+            <div class="row form-group">
+              <label>Type of Employment --CHANGE</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="employmentType"
+                autocomplete="off"/>
+            </div>
+            <div class="row form-group">
+              <label>Period of Employment --CHANGE</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="employmentPeriod"
+                autocomplete="off"/>
+            </div>
+            <div class="row form-group">
+              <label>Last Designation held</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="lastDesignation"
+                autocomplete="off"/>
+            </div>
+            <div class="row form-group">
+              <label>Last Drawn Salary</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="lastSalary"
+                autocomplete="off"/>
+            </div>
+            <div class="row form-group">
+              <label>Reported To</label>
+              <label>Name</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="reportedToName"
+                autocomplete="off"/>
+            </div>
+            <div class="row form-group">
+              <label>Designation</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="reportedToDesignation"
+                autocomplete="off"/>
+            </div>
+            <div class="row form-group">
+              <label>Contact No</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="reportedToNumber"
+                autocomplete="off"/>
+            </div>
+            <div class="row form-group">
+              <label>Reason for Leaving</label>
+              <textarea
+                class="form-control"
+                formControlName="reasonForLeaving">
+              </textarea>
+            </div>
+            <div class="row form-group">
+              <label>Mode of Separation</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="separationMode"
+                autocomplete="off"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-default" type="button" (click)="addEmployer()">Add Employer</button>
+    </div>
+  </div>
+</div>

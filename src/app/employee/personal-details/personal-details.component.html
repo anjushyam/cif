@@ -1,0 +1,201 @@
+<div class="row">
+  <h4>Personal Details</h4>
+  <p class="text-danger">Please expand initials in your name -- As the same would be used in our Employment records</p>
+  <div [formGroup]="personalDetailsForm">
+    <div class="row form-group">
+      <div class="col-xs-1">
+        <label for="namePrefix">Title</label>
+        <select
+          class="form-control"
+          id="namePrefix"
+          name="namePrefix"
+          [formControlName]="'namePrefix'"
+          [ngClass]="{'has-error': (namePrefix.dirty || namePrefix.touched) && namePrefix.invalid}" >
+          <option value="Mr.">Mr.</option>
+          <option value="Ms.">Ms.</option>
+        </select>
+        <span class="text-danger"
+          *ngIf="(namePrefix.dirty || namePrefix.touched) && namePrefix.invalid && namePrefix.errors.required">
+          Title is required
+        </span>
+      </div>
+      <div class="col-xs-3">
+        <label for="firstName">First Name</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="firstName"
+          name="firstName"
+          pattern="[a-zA-Z ]*"
+          [formControlName]="'firstName'"
+          autocomplete="off"
+          [ngClass]="{'has-error': (firstName.dirty || firstName.touched) && firstName.invalid}" />
+        <span class="text-danger"
+          *ngIf="(firstName.dirty || firstName.touched) && firstName.invalid && firstName.errors.required">
+          First Name is required
+        </span>
+        <span class="text-danger"
+          *ngIf="(firstName.dirty || firstName.touched) && firstName.invalid && firstName.errors.pattern">
+          Only alphabets are allowed
+        </span>
+      </div>
+      <div class="col-xs-3">
+        <label for="middleName">Middle Name</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="middleName"
+          name="middleName"
+          pattern="[a-zA-Z ]*"
+          [formControlName]="'middleName'"
+          autocomplete="off"
+          [ngClass]="{'has-error': (middleName.dirty || middleName.touched) && middleName.invalid}" />
+        <span class="text-danger"
+          *ngIf="(middleName.dirty || middleName.touched) && middleName.invalid && middleName.errors.required">
+          Middle Name is required
+        </span>
+        <span class="text-danger"
+          *ngIf="(middleName.dirty || middleName.touched) && middleName.invalid && middleName.errors.pattern">
+          Only alphabets are allowed
+        </span>
+      </div>
+      <div class="col-xs-3">
+        <label for="lastName">Last Name</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="lastName"
+          name="lastName"
+          pattern="[a-zA-Z ]*"
+          [formControlName]="'lastName'"
+          autocomplete="off"
+          [ngClass]="{'has-error': (lastName.dirty || lastName.touched) && lastName.invalid}" />
+        <span class="text-danger"
+          *ngIf="(lastName.dirty || lastName.touched) && lastName.invalid && lastName.errors.required">
+          Last Name is required
+        </span>
+        <span class="text-danger"
+          *ngIf="(lastName.dirty || lastName.touched) && lastName.invalid && lastName.errors.pattern">
+          Only alphabets are allowed
+        </span>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-xs-3">
+        <span>Gender</span>
+        <div class="radio">
+          <label for="male">
+            <input id="male" name="gender" type="radio" value="male" [formControlName]="'gender'" />Male
+          </label>
+        </div>
+        <div class="radio">
+          <label for="female">
+            <input id="female" name="gender" type="radio" value="female" [formControlName]="'gender'" />Female
+          </label>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="row form-group">
+          <label for="dob">Date of birth</label>
+          <input
+            required
+            type="text"
+            id="dob"
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dob"
+            [formControlName]="'dob'"
+            autocomplete="off"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            (click)="d.open()"
+            ng-readonly="true"
+            [minDate]="{year: 1970, month: 01, day: 01}"
+            [maxDate]="{year: 2000, month: 12, day: 31}"
+            [ngClass]="{'has-error': (dob.dirty || dob.touched) && dob.invalid}" />
+          <span class="text-danger"
+            *ngIf="(dob.dirty || dob.touched) && dob.invalid && dob.errors.required">
+            Date of birth is required
+          </span>
+<!--            pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"-->
+<!--            <span class="text-danger"-->
+<!--                  *ngIf="(dob.dirty || dob.touched) && dob.invalid && dob.errors.pattern">-->
+<!--            Date format is yyyy-mm-dd-->
+<!--          </span>-->
+        </div>
+        <div class="row form-group">
+          <label for="pob">Place of birth</label>
+          <input
+            required
+            type="text"
+            id="pob"
+            class="form-control"
+            name="pob"
+            pattern="[a-zA-Z ]*"
+            [formControlName]="'pob'"
+            autocomplete="off"
+            [ngClass]="{'has-error': (pob.dirty || pob.touched) && pob.invalid}" />
+          <span class="text-danger"
+            *ngIf="(pob.dirty || pob.touched) && pob.invalid && pob.errors.required">
+            Place of birth is required
+          </span>
+          <span class="text-danger"
+            *ngIf="(pob.dirty || pob.touched) && pob.invalid && pob.errors.pattern">
+            Only alphabets are allowed
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row form-group">
+      <p class="col-xs-3">Contact Details</p>
+      <div class="col-xs-6">
+        <div class="row form-group">
+          <label for="mobileNumber">Mobile Number</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="mobileNumber"
+            name="mobileNumber"
+            pattern="[7-9]{1}[0-9]{9}"
+            [formControlName]="'mobileNumber'"
+            autocomplete="off"
+            [ngClass]="{'has-error': (mobileNumber.dirty || mobileNumber.touched) && mobileNumber.invalid}" />
+          <span class="text-danger"
+            *ngIf="(mobileNumber.dirty || mobileNumber.touched) && mobileNumber.invalid && mobileNumber.errors.required">
+            Mobile Number is required
+          </span>
+          <span class="text-danger"
+            *ngIf="(mobileNumber.dirty || mobileNumber.touched) && mobileNumber.invalid && mobileNumber.errors.pattern">
+            Invalid format for mobile number
+          </span>
+        </div>
+        <div class="row form-group">
+          <label for="emailId">Personal Email ID</label>
+          <input
+            required
+            type="email"
+            class="form-control"
+            id="emailId"
+            name="emailId"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            [formControlName]="'emailId'"
+            autocomplete="off"
+            [ngClass]="{'has-error': (emailId.dirty || emailId.touched) && emailId.invalid}" />
+          <span class="text-danger"
+            *ngIf="(emailId.dirty || emailId.touched) && emailId.invalid && emailId.errors.required">
+            Email ID is required
+          </span>
+          <span class="text-danger"
+            *ngIf="(emailId.dirty || emailId.touched) && emailId.invalid && emailId.errors.pattern">
+            Invalid format for email address
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

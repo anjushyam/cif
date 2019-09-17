@@ -1,0 +1,91 @@
+<div class="row">
+  <h4>ID Details</h4>
+  <div [formGroup]="idDetailsForm">
+    <div class="col-xs-4">
+      <div class="row form-group">
+        <label for="nationality">Nationality</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="nationality"
+          name="nationality"
+          pattern="[a-zA-Z ]*"
+          [formControlName]="'nationality'"
+          autocomplete="off"
+          [ngClass]="{'has-error': (nationality.dirty || nationality.touched) && nationality.invalid}" />
+        <span class="text-danger"
+          *ngIf="(nationality.dirty || nationality.touched) && nationality.invalid && nationality.errors.required">
+          First Name is required
+        </span>
+        <span class="text-danger"
+          *ngIf="(nationality.dirty || nationality.touched) && nationality.invalid && nationality.errors.pattern">
+          Only alphabets are allowed
+        </span>
+      </div>
+      <div class="row form-group">
+        <label for="passportNumber">Passport Number</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="passportNumber"
+          name="passportNumber"
+          pattern="[a-zA-Z0-9]*"
+          [formControlName]="'passportNumber'"
+          autocomplete="off"
+          [ngClass]="{'has-error': (passportNumber.dirty || passportNumber.touched) && passportNumber.invalid}" />
+        <span class="text-danger"
+          *ngIf="(passportNumber.dirty || passportNumber.touched) && passportNumber.invalid && passportNumber.errors.required">
+          Passport Number is required
+        </span>
+        <span class="text-danger"
+          *ngIf="(passportNumber.dirty || passportNumber.touched) && passportNumber.invalid && passportNumber.errors.pattern">
+          Only alphabets & numbers are allowed
+        </span>
+      </div>
+      <div class="row form-group">
+        <label for="pan">PAN</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="pan"
+          name="pan"
+          pattern="[a-zA-Z0-9]*"
+          [formControlName]="'pan'"
+          autocomplete="off"
+          [ngClass]="{'has-error': (pan.dirty || pan.touched) && pan.invalid}">
+        <span class="text-danger"
+          *ngIf="(pan.dirty || pan.touched) && pan.invalid && pan.errors.required">
+          PAN is required
+        </span>
+        <span class="text-danger"
+          *ngIf="(pan.dirty || pan.touched) && pan.invalid && pan.errors.pattern">
+          Only alphabets & numbers are allowed
+        </span>
+      </div>
+      <div class="row form-group">
+        <label for="nsrNumber">NASSCOM-NSR(NationalSkillsRegistry)ITPIN Number</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="nsrNumber"
+          name="nsrNumber"
+          pattern="[a-zA-Z0-9]*"
+          [formControlName]="'nsrNumber'"
+          autocomplete="off"
+          [ngClass]="{'has-error': (nsrNumber.dirty || nsrNumber.touched) && nsrNumber.invalid}">
+        <span class="text-danger"
+          *ngIf="(nsrNumber.dirty || nsrNumber.touched) && nsrNumber.invalid && nsrNumber.errors.required">
+          NASSCOM-NSR ITPIN Number is required
+        </span>
+        <span class="text-danger"
+          *ngIf="(nsrNumber.dirty || nsrNumber.touched) && nsrNumber.invalid && nsrNumber.errors.pattern">
+          Only alphabets & numbers are allowed
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

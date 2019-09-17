@@ -1,0 +1,143 @@
+<div [formGroup]="addressDetailsForm">
+  <div *ngFor="let addressType of addressTypes" formGroupName="{{addressType}}">
+    <div class="row">
+      <h4>
+        {{ addressType === 'currentAddress' ? 'CURRENT RESIDING ADDRESS (In Detail)' :  'PERMANENT/NATIVE ADDRESS (In Detail)'}}
+      </h4>
+      <div *ngIf="addressType === 'permanentAddress'">
+        <input name="same_address" type="checkbox" (change)="copyAddress($event)" />
+        Same as Current Residing Address
+      </div>
+      <div class="row">
+        <div class="col-xs-4 form-group">
+          <label for="houseNumber">House Number</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="houseNumber"
+            name="houseNumber"
+            formControlName="houseNumber"
+            autocomplete="off" />
+          <!--          [ngClass]="{'has-error': (houseNumber.dirty || houseNumber.touched) && houseNumber.invalid}" />-->
+          <!--        <span class="text-danger"-->
+          <!--              *ngIf="(houseNumber.dirty || houseNumber.touched) && houseNumber.invalid && houseNumber.errors.required">-->
+          <!--          House number is required-->
+          <!--        </span>-->
+        </div>
+        <div class="col-xs-4 form-group">
+          <label for="street">Street</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="street"
+            name="street"
+            formControlName="street"
+            autocomplete="off" />
+          <!--          [ngClass]="{'has-error': (street.dirty || street.touched) && street.invalid}" />-->
+          <!--        <span class="text-danger"-->
+          <!--              *ngIf="(street.dirty || street.touched) && street.invalid && street.errors.required">-->
+          <!--          Street is required-->
+          <!--        </span>-->
+        </div>
+        <div class="col-xs-4 form-group">
+          <label for="city">City</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="city"
+            name="city"
+            formControlName="city"
+            autocomplete="off" />
+          <!--          [ngClass]="{'has-error': (city.dirty || city.touched) && city.invalid}" />-->
+          <!--        <span class="text-danger"-->
+          <!--              *ngIf="(city.dirty || city.touched) && city.invalid && city.errors.required">-->
+          <!--          Street is required-->
+          <!--        </span>-->
+        </div>
+        <div class="col-xs-4 form-group">
+          <label for="state">State</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="state"
+            name="state"
+            formControlName="state"
+            autocomplete="off" />
+          <!--          [ngClass]="{'has-error': (state.dirty || state.touched) && state.invalid}" />-->
+          <!--        <span class="text-danger"-->
+          <!--              *ngIf="(state.dirty || state.touched) && state.invalid && state.errors.required">-->
+          <!--          State is required-->
+          <!--        </span>-->
+        </div>
+        <div class="col-xs-4 form-group">
+          <label for="pinCode">Pin code</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="pinCode"
+            name="pinCode"
+            formControlName="pinCode"
+            autocomplete="off" />
+          <!--          [ngClass]="{'has-error': (pinCode.dirty || pinCode.touched) && pinCode.invalid}" />-->
+          <!--        <span class="text-danger"-->
+          <!--              *ngIf="(pinCode.dirty || pinCode.touched) && pinCode.invalid && pinCode.errors.required">-->
+          <!--          Pin code is required-->
+          <!--        </span>-->
+        </div>
+        <div class="col-xs-4 form-group">
+          <label for="landmark">Landmark</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="landmark"
+            name="landmark"
+            formControlName="landmark"
+            autocomplete="off" />
+          <!--          [ngClass]="{'has-error': (landmark.dirty || landmark.touched) && landmark.invalid}" />-->
+          <!--        <span class="text-danger"-->
+          <!--              *ngIf="(landmark.dirty || landmark.touched) && landmark.invalid && landmark.errors.required">-->
+          <!--          Landmark is required-->
+          <!--        </span>-->
+        </div>
+        <div class="col-xs-4 form-group">
+          <label for="duration">Duration of Stay</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="duration"
+            name="duration"
+            formControlName="duration"
+            autocomplete="off" />
+          <!--          [ngClass]="{'has-error': (duration.dirty || duration.touched) && duration.invalid}" />-->
+          <!--        <span class="text-danger"-->
+          <!--              *ngIf="(duration.dirty || duration.touched) && duration.invalid && duration.errors.required">-->
+          <!--          Duration of Stay is required-->
+          <!--        </span>-->
+        </div>
+        <div class="col-xs-4 form-group">
+          <label for="telephone">Telephone</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="telephone"
+            name="telephone"
+            formControlName="telephone"
+            autocomplete="off" />
+          <!--          [ngClass]="{'has-error': (telephone.dirty || telephone.touched) && telephone.invalid}" />-->
+          <!--        <span class="text-danger"-->
+          <!--              *ngIf="(telephone.dirty || telephone.touched) && telephone.invalid && telephone.errors.required">-->
+          <!--          Telephone is required-->
+          <!--        </span>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

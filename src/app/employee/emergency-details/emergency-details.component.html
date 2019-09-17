@@ -1,0 +1,130 @@
+<div class="row">
+  <h4>EMERGENCY DETAILS</h4>
+  <div [formGroup]="emergencyDetailsForm">
+    <div class="col-xs-4">
+      <div class="row form-group">
+        <label for="bloodGroup">Blood Group</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="bloodGroup"
+          name="bloodGroup"
+          formControlName="bloodGroup"
+          autocomplete="off"
+          [ngClass]="{'has-error': (bloodGroup.dirty || bloodGroup.touched) && bloodGroup.invalid}" />
+        <span class="text-danger"
+              *ngIf="(bloodGroup.dirty || bloodGroup.touched) && bloodGroup.invalid && bloodGroup.errors.required">
+          Blood Group is required
+        </span>
+      </div>
+      <div class="row form-group">
+        <label for="bloodGroup">Allergic To</label>
+        <textarea
+          class="form-control"
+          id="allergicTo"
+          name="allergicTo"
+          formControlName="allergicTo"></textarea>
+      </div>
+      <div class="row form-group">
+        <label for="bloodPressure">Blood Pressure</label>
+        <input
+          type="text"
+          class="form-control"
+          id="bloodPressure"
+          name="bloodPressure"
+          formControlName="bloodPressure"
+          autocomplete="off" />
+      </div>
+      <div class="row form-group">
+        <label for="sugar">Sugar</label>
+        <input
+          type="text"
+          class="form-control"
+          id="sugar"
+          name="sugar"
+          formControlName="sugar"
+          autocomplete="off" />
+      </div>
+      <div class="row form-group">
+        <label>Eye Sight</label>
+        <div class="col-xs-4">
+          <label for="eyeSightLeft">Left</label>
+          <input
+            type="text"
+            class="form-control"
+            id="eyeSightLeft"
+            name="eyeSightLeft"
+            formControlName="eyeSightLeft"
+            autocomplete="off" />
+        </div>
+        <div class="col-xs-4">
+          <label for="eyeSightRight">Right</label>
+          <input
+            type="text"
+            class="form-control"
+            id="eyeSightRight"
+            name="eyeSightRight"
+            formControlName="eyeSightRight"
+            autocomplete="off" />
+        </div>
+      </div>
+      <div class="row form-group">
+        <label for="illness">Any major illness</label>
+        <textarea
+          class="form-control"
+          id="illness"
+          name="illness"
+          formControlName="illness"></textarea>
+      </div>
+      <div class="row form-group">
+        <label for="emergencyContactName">Contact person in case of Emergency</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="emergencyContactName"
+          name="emergencyContactName"
+          formControlName="emergencyContactName"
+          autocomplete="off"
+          [ngClass]="{'has-error': (emergencyContactName.dirty || emergencyContactName.touched) && emergencyContactName.invalid}" />
+        <span class="text-danger"
+              *ngIf="(emergencyContactName.dirty || emergencyContactName.touched) && emergencyContactName.invalid && emergencyContactName.errors.required">
+          Contact Name is required
+        </span>
+      </div>
+      <div class="row form-group">
+        <label for="emergencyContactAddress">Address</label>
+        <textarea
+          required
+          class="form-control"
+          id="emergencyContactAddress"
+          name="emergencyContactAddress"
+          formControlName="emergencyContactAddress"
+          [ngClass]="{'has-error': (emergencyContactAddress.dirty || emergencyContactAddress.touched) && emergencyContactAddress.invalid}" >
+        </textarea>
+        <span class="text-danger"
+              *ngIf="(emergencyContactAddress.dirty || emergencyContactAddress.touched) && emergencyContactAddress.invalid && emergencyContactAddress.errors.required">
+          Address is required
+        </span>
+      </div>
+      <div class="row form-group">
+        <label for="emergencyContactNumber">Phone number</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="emergencyContactNumber"
+          name="emergencyContactNumber"
+          formControlName="emergencyContactNumber"
+          autocomplete="off"
+          [ngClass]="{'has-error': (emergencyContactNumber.dirty || emergencyContactNumber.touched) && emergencyContactNumber.invalid}" />
+        <span class="text-danger"
+              *ngIf="(emergencyContactNumber.dirty || emergencyContactNumber.touched) && emergencyContactNumber.invalid && emergencyContactNumber.errors.required">
+          EmergencyContact Name is required
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+

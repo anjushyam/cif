@@ -1,0 +1,28 @@
+.ng-invalid .has-error {
+  border: 1px solid red;
+}
+
+.avatar-centered {
+  width: 180px;
+  margin: 0 auto;
+}
+
+.avatar-block {
+  border: 1px solid black;
+  width: 180px;
+  min-height: 180px;
+  line-height: 180px;
+}
+
+.avatar-container {
+  display: inline-block;
+}
+
+.avatar-placeholder {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.avatar {
+  width: 100%;
+}

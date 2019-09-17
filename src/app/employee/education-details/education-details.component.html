@@ -1,0 +1,68 @@
+<div class="row">
+  <h4>EDUCATION DETAILS</h4>
+  <div [formGroup]="educationalDetailsForm" class="container">
+    <table class="table table-bordered table-responsive-md table-striped text-center">
+      <thead>
+        <th class="text-center">Qualification with Specialization</th>
+        <th class="text-center">Institution Name & City(School/College)</th>
+        <th class="text-center">University Name & City / Board Affiliated To</th>
+        <th class="text-center">StudentID/Reg No.</th>
+        <th class="text-center">Period of Qualification (From-To) yyyy</th>
+        <th class="text-center">Year of Passing</th>
+        <th class="text-center">Average % of marks / CGPA</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let specialization of specializations" formGroupName="{{specialization}}">
+          <td>
+            <input
+              class="input-padding"
+              name="specializationName"
+              formControlName="specializationName" />
+          </td>
+          <td>
+            <input
+              class="input-padding"
+              name="institutionName"
+              formControlName="institutionName"
+              contenteditable="true" />
+          </td>
+          <td>
+            <input
+              class="input-padding"
+              name="boardAffiliated"
+              formControlName="boardAffiliated"
+              contenteditable="true" />
+          </td>
+          <td>
+            <input
+              class="input-padding"
+              name="registerNumber"
+              formControlName="registerNumber"
+              contenteditable="true" />
+          </td>
+          <td>
+            <input
+              class="input-padding"
+              name="period"
+              formControlName="period"
+              contenteditable="true" />
+          </td>
+          <td>
+            <input
+              class="input-padding"
+              name="passingYear"
+              formControlName="passingYear"
+              contenteditable="true" />
+          </td>
+          <td>
+            <input
+              class="input-padding"
+              name="markScored"
+              formControlName="markScored"
+              contenteditable="true" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

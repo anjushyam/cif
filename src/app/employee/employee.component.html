@@ -10,7 +10,7 @@
                  accept="image/*"
                  (change)="showPreview($event)" />
           <div class="avatar-block"
-               (click)="uploader.click()"
+               (drop)="drop($event)"
                (dragover)="allowDrop($event)">
             <span class="avatar-container" *ngIf="imageURL && imageURL !== ''; else imageText">
               <img class="avatar" [src]="imageURL" [alt]="employeeFormGroup.value.name">

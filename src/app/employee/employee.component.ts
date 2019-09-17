@@ -66,7 +66,7 @@ export class EmployeeComponent implements OnInit, AfterViewInit {
   showPreview(event) {
     event.preventDefault();
 
-    const file = (event.target as HTMLInputElement).files[0];
+    const [file] = event.target.files;
     this.employeeFormGroup.patchValue({
       avatar: file
     });
@@ -81,6 +81,11 @@ export class EmployeeComponent implements OnInit, AfterViewInit {
 
   allowDrop(event) {
     event.preventDefault();
+  }
+
+  drop(event) {
+    event.preventDefault();
+    this.showPreview(event);
   }
 
   get employeeName() {

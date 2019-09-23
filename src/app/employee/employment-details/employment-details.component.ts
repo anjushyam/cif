@@ -8,6 +8,7 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class EmploymentDetailsComponent implements OnInit {
   @Input() employeeFormGroup: FormGroup;
+  separationReasonEle = [];
 
   constructor(private fb: FormBuilder) { }
 
@@ -20,7 +21,9 @@ export class EmploymentDetailsComponent implements OnInit {
   }
 
   addEmployer() {
-    (this.employeeFormGroup.get('previousEmployers') as FormArray).push(this.createEmployer());
+    const previousEmployerGroup = (this.employeeFormGroup.get('previousEmployers') as FormArray);
+    previousEmployerGroup.push(this.createEmployer());
+    this.separationReasonEle[previousEmployerGroup.length - 1] = false;
   }
 
   createEmployer() {
@@ -29,18 +32,39 @@ export class EmploymentDetailsComponent implements OnInit {
       address: [''],
       employeeId: [''],
       employmentType: [''],
-      employmentPeriod: [''],
+      employmentPeriod: this.fb.group({
+        from: [''],
+        to: ['']
+      }),
       lastDesignation: [''],
       lastSalary: [''],
-      reportedToName: [''],
-      reportedToDesignation: [''],
-      reportedToNumber: [''],
+      reportedTo: this.fb.group({
+        name: [''],
+        designation: [''],
+        number: ['']
+      }),
       reasonForLeaving: [''],
       separationMode: [''],
+      separationReason: ['']
     });
   }
 
-  // (Tick accordingly) Permanent Contract
-  // Period of Employment(DD-Month-YY)
-  // Mode of Separation (Tick accordingly) a. Resignation b. Termination c. Absconded d. Closed Operations e. Others (Pls Specify)
+  showSeparationReason(index, value) {
+    this.separationReasonEle[index] = (value === 'other');
+  }
+
+  hasError(index: number, fieldName: string) {
+    const fieldControl = (this.employeeFormGroup.get('previousEmployers') as FormArray).controls[index].get(fieldName);
+    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid;
+  }
+
+  hasRequiredError(index: number, fieldName: string) {
+    const fieldControl = (this.employeeFormGroup.get('previousEmployers') as FormArray).controls[index].get(fieldName);
+    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid && fieldControl.errors.required;
+  }
+
+  hasPatternError(index: number, fieldName: string) {
+    const fieldControl = (this.employeeFormGroup.get('previousEmployers') as FormArray).controls[index].get(fieldName);
+    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid && fieldControl.errors.pattern;
+  }
 }

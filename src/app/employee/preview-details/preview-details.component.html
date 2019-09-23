@@ -1,0 +1,588 @@
+<div class="row preview-section-container">
+  <ng-template #candidateDetails let-modal>
+    <div class="modal-header">
+      <a href="https://www.devon.nl">
+        <img src="assets/images/devon-logo-blue.png" width="100">
+      </a>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row text-center">
+        <h4>Devon Software Service Pvt. Ltd.</h4>
+        <h2>CANDIDATE INFORMATION FORM</h2>
+        <h2>(CIF)</h2>
+      </div>
+      <div class="form-group avatar-block avatar-centered">
+          <span class="avatar-container">
+            <img class="avatar" />
+          </span>
+      </div>
+      <div class="form-group">
+        <strong>Employee Name :</strong> {{ employeeFormGroup.get('employeeName').value }}
+      </div>
+      <div class="form-group">
+        <strong>Employee ID :</strong> {{ employeeFormGroup.get('employeeId').value }}
+      </div>
+      <div class="form-group">
+        <h4>Personal Details <small class="pull-right"><a href="#" (click)="editDetails()">Edit</a></small></h4>
+        <table class="table-bordered table-responsive table">
+          <thead>
+            <th class="text-center padding-one">Title</th>
+            <th class="text-center padding-one">First Name</th>
+            <th class="text-center padding-one">Middle Name</th>
+            <th class="text-center padding-one">Last Name</th>
+            <th class="text-center padding-one">Gender</th>
+            <th class="text-center padding-one">DOB</th>
+            <th class="text-center padding-one">Place of Birth</th>
+            <th class="text-center padding-one">Mobile Number</th>
+            <th class="text-center padding-one">Personal Email ID</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ employeeFormGroup.get('personalDetails.namePrefix').value }}</td>
+              <td>{{ employeeFormGroup.get('personalDetails.firstName').value }}</td>
+              <td>{{ employeeFormGroup.get('personalDetails.middleName').value }}</td>
+              <td>{{ employeeFormGroup.get('personalDetails.lastName').value }}</td>
+              <td>{{ employeeFormGroup.get('personalDetails.gender').value }}</td>
+              <td>
+                <span *ngIf="employeeFormGroup.get('personalDetails.dob').value">
+                {{ employeeFormGroup.get('personalDetails.dob').value['day'] }}/
+                {{ employeeFormGroup.get('personalDetails.dob').value['month'] }}/
+                {{ employeeFormGroup.get('personalDetails.dob').value['year'] }}
+                </span>
+              </td>
+              <td>{{ employeeFormGroup.get('personalDetails.pob').value }}</td>
+              <td>{{ employeeFormGroup.get('personalDetails.mobileNumber').value }}</td>
+              <td>{{ employeeFormGroup.get('personalDetails.emailId').value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="form-group">
+        <h4>ID Details <small class="pull-right"><a href="#" (click)="editDetails()">Edit</a></small></h4>
+        <table class="table-bordered table-responsive table">
+          <thead>
+            <th class="text-center padding-one">Nationality</th>
+            <th class="text-center padding-one">Passport Number</th>
+            <th class="text-center padding-one">PAN</th>
+            <th class="text-center padding-one">NASSCOM-NSR ITPIN Number</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ employeeFormGroup.get('idDetails.nationality').value }}</td>
+              <td>{{ employeeFormGroup.get('idDetails.passportNumber').value }}</td>
+              <td>{{ employeeFormGroup.get('idDetails.pan').value }}</td>
+              <td>{{ employeeFormGroup.get('idDetails.nsrNumber').value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="form-group">
+        <h4>Family Details <small class="pull-right"><a href="#" (click)="editDetails()">Edit</a></small></h4>
+        <table class="table-bordered table-responsive table">
+          <thead>
+            <th class="text-center padding-one"></th>
+            <th class="text-center padding-one">Name</th>
+            <th class="text-center padding-one">DOB</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Father</td>
+              <td>{{ employeeFormGroup.get('familyDetails.fatherName').value }}</td>
+              <td>
+                <span *ngIf="employeeFormGroup.get('familyDetails.fatherDob').value">
+                {{ employeeFormGroup.get('familyDetails.fatherDob').value['day'] }}/
+                {{ employeeFormGroup.get('familyDetails.fatherDob').value['month'] }}/
+                {{ employeeFormGroup.get('familyDetails.fatherDob').value['year'] }}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>Mother</td>
+              <td>{{ employeeFormGroup.get('familyDetails.motherName').value }}</td>
+              <td>
+                <span *ngIf="employeeFormGroup.get('familyDetails.motherDob').value">
+                {{ employeeFormGroup.get('familyDetails.motherDob').value['day'] }}/
+                {{ employeeFormGroup.get('familyDetails.motherDob').value['month'] }}/
+                {{ employeeFormGroup.get('familyDetails.motherDob').value['year'] }}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>Spouse</td>
+              <td>{{ employeeFormGroup.get('familyDetails.spouseName').value }}</td>
+              <td>
+                <span *ngIf="employeeFormGroup.get('familyDetails.spouseDob').value">
+                {{ employeeFormGroup.get('familyDetails.spouseDob').value['day'] }}/
+                {{ employeeFormGroup.get('familyDetails.spouseDob').value['month'] }}/
+                {{ employeeFormGroup.get('familyDetails.spouseDob').value['year'] }}
+                </span>
+              </td>
+            </tr>
+            <tr *ngFor="let child of employeeFormGroup.get('familyDetails.children').value; let i = index">
+            <td>Child {{i+1}}</td>
+            <td>{{ child.childName }}</td>
+            <td>
+              <span *ngIf="child.childDob">
+              {{ child.childDob['day'] }}/
+              {{ child.childDob['month'] }}/
+              {{ child.childDob['year'] }}
+              </span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="form-group">
+        <h4>Address Details <small class="pull-right"><a href="#" (click)="editDetails()">Edit</a></small></h4>
+        <p>Current Residing Address</p>
+        <table class="table-bordered table-responsive table">
+          <thead>
+            <th class="text-center padding-one">House Number</th>
+            <th class="text-center padding-one">Street</th>
+            <th class="text-center padding-one">City</th>
+            <th class="text-center padding-one">State</th>
+            <th class="text-center padding-one">PinCode</th>
+            <th class="text-center padding-one">Landmark</th>
+            <th class="text-center padding-one">Duration</th>
+            <th class="text-center padding-one">Telephone</th>
+          </thead>
+          <tbody>
+          <tr>
+            <td>{{ employeeFormGroup.get('addressDetails.currentAddress.houseNumber').value }}</td>
+            <td>{{ employeeFormGroup.get('addressDetails.currentAddress.street').value }}</td>
+            <td>{{ employeeFormGroup.get('addressDetails.currentAddress.city').value }}</td>
+            <td>{{ employeeFormGroup.get('addressDetails.currentAddress.state').value }}</td>
+            <td>{{ employeeFormGroup.get('addressDetails.currentAddress.pinCode').value }}</td>
+            <td>{{ employeeFormGroup.get('addressDetails.currentAddress.landmark').value }}</td>
+            <td>{{ employeeFormGroup.get('addressDetails.currentAddress.duration').value }}</td>
+            <td>{{ employeeFormGroup.get('addressDetails.currentAddress.telephone').value }}</td>
+          </tr>
+          </tbody>
+        </table>
+        <p>Permanent Address</p>
+        <table class="table-bordered table-responsive table">
+          <thead>
+            <th class="text-center padding-one">House Number</th>
+            <th class="text-center padding-one">Street</th>
+            <th class="text-center padding-one">City</th>
+            <th class="text-center padding-one">State</th>
+            <th class="text-center padding-one">PinCode</th>
+            <th class="text-center padding-one">Landmark</th>
+            <th class="text-center padding-one">Duration</th>
+            <th class="text-center padding-one">Telephone</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ employeeFormGroup.get('addressDetails.permanentAddress.houseNumber').value }}</td>
+              <td>{{ employeeFormGroup.get('addressDetails.permanentAddress.street').value }}</td>
+              <td>{{ employeeFormGroup.get('addressDetails.permanentAddress.city').value }}</td>
+              <td>{{ employeeFormGroup.get('addressDetails.permanentAddress.state').value }}</td>
+              <td>{{ employeeFormGroup.get('addressDetails.permanentAddress.pinCode').value }}</td>
+              <td>{{ employeeFormGroup.get('addressDetails.permanentAddress.landmark').value }}</td>
+              <td>{{ employeeFormGroup.get('addressDetails.permanentAddress.duration').value }}</td>
+              <td>{{ employeeFormGroup.get('addressDetails.permanentAddress.telephone').value }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="employeeFormGroup.get('addressDetails.remarks').value">
+          <strong>Remarks, If any :</strong>
+          {{ employeeFormGroup.get('addressDetails.remarks').value }}
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <h4>Educational Details <small class="pull-right"><a href="#" (click)="editDetails()">Edit</a></small></h4>
+        <table class="table-bordered table-responsive table">
+          <thead>
+            <th class="text-center padding-one">Qualification with Specialization</th>
+            <th class="text-center padding-one">Institution Name & City(School/College)</th>
+            <th class="text-center padding-one">University Name & City / Board Affiliated To</th>
+            <th class="text-center padding-one">StudentID/Reg No.</th>
+            <th class="text-center padding-one">Period of Qualification (From-To) yyyy</th>
+            <th class="text-center padding-one">Year of Passing</th>
+            <th class="text-center padding-one">Average % of marks / CGPA</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let specialization of ['tenth', 'twelfth', 'graduation', 'postGraduation'];">
+              <td>{{ employeeFormGroup.get('educationalDetails.'+specialization+'.specializationName').value }}</td>
+              <td>{{ employeeFormGroup.get('educationalDetails.'+specialization+'.institutionName').value }}</td>
+              <td>{{ employeeFormGroup.get('educationalDetails.'+specialization+'.boardAffiliated').value }}</td>
+              <td>{{ employeeFormGroup.get('educationalDetails.'+specialization+'.registerNumber').value }}</td>
+              <td>{{ employeeFormGroup.get('educationalDetails.'+specialization+'.period').value }}</td>
+              <td>{{ employeeFormGroup.get('educationalDetails.'+specialization+'.passingYear').value }}</td>
+              <td>
+                <span *ngIf="employeeFormGroup.get('educationalDetails.'+specialization+'.markScored').value">
+                {{ employeeFormGroup.get('educationalDetails.'+specialization+'.markScored').value }}%
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="employeeFormGroup.get('educationalDetails.gapReason').value">
+          <strong>State reasons for gap in education (if any) :</strong>
+          {{ employeeFormGroup.get('educationalDetails.gapReason').value }}
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <h4>Employment Details <small class="pull-right"><a href="#" (click)="editDetails()">Edit</a></small></h4>
+        <ol class="text-danger">
+          <li>
+            <p>
+              Ensure that you are descriptive wherever necessary – e.g. If your previous company is closed
+              down, please do mention it. Location & Employee Code/ ID/ Number is mandatory. If your
+              previous employer did not provide the Employee ID, please mention and state reasons for the
+              same
+            </p>
+          </li>
+          <li>
+            <p>
+              Employment details should be of the company you are on payrolls of, not of a company
+              you are deputed to on an assignment with. In case you are showing employments
+              experience in a skill enabling or professional Training institute, the same should only be
+              shown if you were on the payrolls of such an institute.
+            </p>
+          </li>
+        </ol>
+        <br>
+        <table class="table-bordered table-responsive table"
+               *ngFor="let employment of employeeFormGroup.get('previousEmployers').value; let i = index;">
+          <caption>Employer {{i+1}}</caption>
+          <tbody>
+            <tr>
+              <td>Organization Name</td>
+              <td>{{ employment['organizationName'] }}</td>
+            </tr>
+            <tr>
+              <td>Address (Branch Name)</td>
+              <td>{{ employment['address'] }}</td>
+            </tr>
+            <tr>
+              <td>Employee ID</td>
+              <td>{{ employment['employeeId'] }}</td>
+            </tr>
+            <tr>
+              <td>Type of Employment</td>
+              <td>{{ employment['employmentType'] }}</td>
+            </tr>
+            <tr>
+              <td>Period of Employment</td>
+              <td>
+                <strong>From</strong> :
+                <span *ngIf="employment['employmentPeriod']['from']">
+                  {{ employment['employmentPeriod']['from']['day'] }}/
+                  {{ employment['employmentPeriod']['from']['month'] }}/
+                  {{ employment['employmentPeriod']['from']['year'] }}
+                </span>
+                <br>
+                <strong>To</strong> :
+                <span *ngIf="employment['employmentPeriod']['to']">
+                  {{ employment['employmentPeriod']['to']['day'] }}/
+                  {{ employment['employmentPeriod']['to']['month'] }}/
+                  {{ employment['employmentPeriod']['to']['year'] }}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>Last Designation held</td>
+              <td>{{ employment['lastDesignation'] }}</td>
+            </tr>
+            <tr>
+              <td>Last Drawn Salary</td>
+              <td>{{ employment['lastSalary'] }}</td>
+            </tr>
+            <tr>
+              <td>Reported To</td>
+              <td>
+                <strong>Name</strong> : {{ employment['reportedTo']['name'] }}<br>
+                <strong>Designation</strong> : {{ employment['reportedTo']['designation'] }}<br>
+                <strong>Contact No</strong> : {{ employment['reportedTo']['number'] }}
+              </td>
+            </tr>
+            <tr>
+              <td>Reason for Leaving</td>
+              <td>{{ employment['reasonForLeaving'] }}</td>
+            </tr>
+            <tr>
+              <td>Mode of Separation</td>
+              <td>{{ employment['separationMode'] }}</td>
+            </tr>
+            <tr *ngIf="employment['separationReason']">
+              <td>Reason of separation</td>
+              <td>{{ employment['separationReason'] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="form-group">
+        <h4>Reference Details <small class="pull-right"><a href="#" (click)="editDetails()">Edit</a></small></h4>
+        <p>Please provide details pertaining to only career experience. Personal details will be considered invalid</p>
+        <br>
+        <table class="table-bordered table-responsive table"
+               *ngFor="let i of [1, 2];">
+          <caption>Reference {{i}}</caption>
+          <tbody>
+            <tr>
+              <td>Name</td>
+              <td>{{ employeeFormGroup.get('referenceDetails.'+i+'.name').value }}</td>
+            </tr>
+            <tr>
+              <td>Designation</td>
+              <td>{{ employeeFormGroup.get('referenceDetails.'+i+'.designation').value }}</td>
+            </tr>
+            <tr>
+              <td>Organization Name</td>
+              <td>{{ employeeFormGroup.get('referenceDetails.'+i+'.organization').value }}</td>
+            </tr>
+            <tr>
+              <td>Contact Number</td>
+              <td>{{ employeeFormGroup.get('referenceDetails.'+i+'.number').value }}</td>
+            </tr>
+            <tr>
+              <td>Email ID</td>
+              <td>{{ employeeFormGroup.get('referenceDetails.'+i+'.email').value }}</td>
+            </tr>
+            <tr>
+              <td>Period of Acquaintance</td>
+              <td>{{ employeeFormGroup.get('referenceDetails.'+i+'.period').value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="form-group">
+        <h4>Additional Information <small class="pull-right"><a href="#" (click)="editDetails()">Edit</a></small></h4>
+        <div class="form-group" *ngIf="employeeFormGroup.get('additionalDetails.disabilities').value">
+          <strong>Physical Disabilities, if any :</strong>
+          <p>{{ employeeFormGroup.get('additionalDetails.disabilities').value }}</p>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('additionalDetails.courtProceeding').value">
+          <strong>Have you been involved in Court Proceeding (If yes, please provide details on a separate sheet of paper)?</strong>
+          <p>{{ employeeFormGroup.get('additionalDetails.courtProceeding').value }}</p>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('additionalDetails.previousInterview.when').value">
+          <strong>Previously have you ever been interviewed in Devon? If yes, please provide details</strong>
+          <div class="form-group" >
+            <strong>When? : </strong>
+            {{employeeFormGroup.get('additionalDetails.previousInterview.when').value['day']}}/
+            {{employeeFormGroup.get('additionalDetails.previousInterview.when').value['month']}}/
+            {{employeeFormGroup.get('additionalDetails.previousInterview.when').value['year']}}
+          </div>
+          <div class="form-group" >
+            <strong>Position : </strong>
+            {{employeeFormGroup.get('additionalDetails.previousInterview.position').value}}
+          </div>
+          <div class="form-group" >
+            <strong>Outcome : </strong>
+            {{employeeFormGroup.get('additionalDetails.previousInterview.outcome').value}}
+          </div>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('additionalDetails.hobbies').value">
+          <strong>Your Hobbies :</strong>
+          <p>{{ employeeFormGroup.get('additionalDetails.hobbies').value }}</p>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('additionalDetails.interests').value">
+          <strong>Your Interests :</strong>
+          <p>{{ employeeFormGroup.get('additionalDetails.interests').value }}</p>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('additionalDetails.goal').value">
+          <strong>Your Goal / Aim in Life :</strong>
+          <p>{{ employeeFormGroup.get('additionalDetails.goal').value }}</p>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('additionalDetails.principals').value">
+          <strong>Principals / ideals which have guided you in life :</strong>
+          <p>{{ employeeFormGroup.get('additionalDetails.principals').value }}</p>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('additionalDetails.strengths').value">
+          <div class="col-xs-3">
+            <strong>Your Strengths</strong>
+            <ol>
+              <li *ngFor="let strength of employeeFormGroup.get('additionalDetails.strengths').value">
+                {{ strength }}
+              </li>
+            </ol>
+          </div>
+          <div class="col-xs-3" *ngIf="employeeFormGroup.get('additionalDetails.weakness').value">
+            <strong>Your Weakness</strong>
+            <ol>
+              <li *ngFor="let weakness of employeeFormGroup.get('additionalDetails.weakness').value">
+                {{ weakness }}
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div
+          class="form-group"
+          *ngIf="employeeFormGroup.get('additionalDetails.willingTravel.india').value
+          || employeeFormGroup.get('additionalDetails.willingTravel.abroad').value
+          || employeeFormGroup.get('additionalDetails.willingTravel.restrictions').value"
+        >
+          <strong>Are you willing to Travel?</strong>
+          <div class="form-group" >
+            <strong>In India : </strong>
+            {{employeeFormGroup.get('additionalDetails.willingTravel.india').value['day']}}
+          </div>
+          <div class="form-group" >
+            <strong>To Abroad : </strong>
+            {{employeeFormGroup.get('additionalDetails.willingTravel.abroad').value}}
+          </div>
+          <div class="form-group" >
+            <strong>State restrictions/problems if any : </strong>
+            {{employeeFormGroup.get('additionalDetails.willingTravel.restrictions').value}}
+          </div>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('additionalDetails.employeeRelation').value">
+          <strong>Are you related to any of the employees? If yes, please refer the name</strong>
+          <p>{{ employeeFormGroup.get('additionalDetails.employeeRelation').value }}</p>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('additionalDetails.publication').value">
+          <strong>Publication if any (list with specimen copy) :</strong>
+          <p>{{ employeeFormGroup.get('additionalDetails.publication').value }}</p>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('additionalDetails.trainingAttended').value">
+          <strong>Any specialized Training Program attended :</strong>
+          <p>{{ employeeFormGroup.get('additionalDetails.trainingAttended').value }}</p>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('additionalDetails.trainingToAttend').value">
+          <strong>Would you like to attend any specific Training :</strong>
+          <p>{{ employeeFormGroup.get('additionalDetails.trainingToAttend').value }}</p>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('additionalDetails.suggestion').value">
+          <strong>Any other information/Suggestion : </strong>
+          <p>{{ employeeFormGroup.get('additionalDetails.suggestion').value }}</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <h4>Emergency Details <small class="pull-right"><a href="#" (click)="editDetails()">Edit</a></small></h4>
+        <table class="table-bordered table-responsive table">
+          <tbody>
+            <tr *ngIf="employeeFormGroup.get('emergencyDetails.bloodGroup').value">
+              <td>Blood Group</td>
+              <td>{{ employeeFormGroup.get('emergencyDetails.bloodGroup').value }}</td>
+            </tr>
+            <tr *ngIf="employeeFormGroup.get('emergencyDetails.allergicTo').value">
+              <td>Allergic To</td>
+              <td>{{ employeeFormGroup.get('emergencyDetails.allergicTo').value }}</td>
+            </tr>
+            <tr *ngIf="employeeFormGroup.get('emergencyDetails.bloodPressure').value">
+              <td>Blood Pressure</td>
+              <td>{{ employeeFormGroup.get('emergencyDetails.bloodPressure').value }}</td>
+            </tr>
+            <tr *ngIf="employeeFormGroup.get('emergencyDetails.sugar').value">
+              <td>Sugar</td>
+              <td>{{ employeeFormGroup.get('emergencyDetails.sugar').value }}</td>
+            </tr>
+            <tr *ngIf="employeeFormGroup.get('emergencyDetails.eyeSightLeft').value
+            || employeeFormGroup.get('emergencyDetails.eyeSightRight').value"
+            >
+              <td>Eye Sight</td>
+              <td>
+                <span>
+                  <strong>Left : </strong>
+                  {{ employeeFormGroup.get('emergencyDetails.eyeSightLeft').value }}
+                </span>
+                <br>
+                <span>
+                  <strong>Right : </strong>
+                  {{ employeeFormGroup.get('emergencyDetails.eyeSightRight').value }}
+                </span>
+              </td>
+            </tr>
+            <tr *ngIf="employeeFormGroup.get('emergencyDetails.illness').value">
+              <td>Any major illness</td>
+              <td>{{ employeeFormGroup.get('emergencyDetails.illness').value }}</td>
+            </tr>
+            <tr *ngIf="employeeFormGroup.get('emergencyDetails.emergencyContactName').value">
+              <td>Contact person in case of Emergency</td>
+              <td>
+                <span>
+                  <strong>Name : </strong>
+                  {{ employeeFormGroup.get('emergencyDetails.emergencyContactName').value }}
+                </span>
+                <br>
+                <span>
+                  <strong>Address : </strong>
+                  {{ employeeFormGroup.get('emergencyDetails.emergencyContactAddress').value }}
+                </span>
+                <br>
+                <span>
+                  <strong>Phone number : </strong>
+                  {{ employeeFormGroup.get('emergencyDetails.emergencyContactNumber').value }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="form-group">
+        <h4>Letter of Authorization <small class="pull-right"><a href="#" (click)="editDetails()">Edit</a></small></h4>
+        <p>
+          I agree to provide copies of mark sheets and relevant certificates. I understand that employment
+          with Devon, is governed by Devon, Employment Policies as applicable, including satisfactory
+          information from a background check.
+        </p>
+        <p>
+          I hereby certify all of the statements made on the Devon, Employee Application Form are true
+          and complete and I understand that omission or misrepresentation of any fact may result in
+          refusal of employment or immediate dismissal.
+        </p>
+        <p>
+          As a condition ofCompany's consideration of my application for employment with the Company,
+          I hereby give my consent to Devon to investigate or cause to be investigated through any
+          third parties my personal, educational, pre or post-employment history, criminal and all
+          other checks relevant to the company. I understand that the background investigation will
+          include, but not be limited to, verification of all information given by me to the Company. I
+          confirm that the Company is entitled to share such investigation report with its clients to the
+          extent necessary in connection with the Services, which I may be required to provide to such
+          clients. I confirm and undertake that the Company shall incur no liability or obligation of any
+          nature whatsoever resulting from such investigation or sharing of the investigation results as above.
+        </p>
+        <br>
+        <div class="form-group" *ngIf="employeeFormGroup.get('authorizationLetter.fullName').value">
+          <span>
+            <strong>Full Name : </strong>
+            {{employeeFormGroup.get('authorizationLetter.fullName').value}}
+          </span>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('authorizationLetter.signature').value">
+          <span>
+            <strong>Signature : </strong>
+            {{employeeFormGroup.get('authorizationLetter.signature').value}}
+          </span>
+        </div>
+        <div class="form-group" *ngIf="employeeFormGroup.get('authorizationLetter.date').value">
+          <span>
+            <strong>Date : </strong>
+            {{employeeFormGroup.get('authorizationLetter.date').value}}
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" #informationTrue />
+          All the above information entered are true to the best of my knowledge
+        </label>
+      </div>
+      <button [disabled]="!informationTrue.checked" type="submit" class="btn btn-light" (click)="addEmployee()">Submit</button>
+    </div>
+    <div class="modal-footer">
+      <a href="https://www.devon.nl" style="display: inline-block;">
+        <img src="assets/images/devon-symbol.png" width="26">
+      </a>
+    </div>
+  </ng-template>
+  <button type="button"
+          class="btn btn-outline-primary mb-2 mr-2"
+          (click)="openPreview(candidateDetails)"
+          >Preview</button>
+<!--          [disabled]="employeeFormGroup.invalid"-->
+</div>

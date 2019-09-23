@@ -47,12 +47,20 @@ export class FamilyDetailsComponent implements OnInit {
     return this.familyDetailsForm.get('spouseDob');
   }
 
+  get children() {
+    return (this.familyDetailsForm.get('children') as FormArray);
+  }
+
   childrenControls() {
     return (this.familyDetailsForm.get('children') as FormArray).controls;
   }
 
   addChild() {
     (this.familyDetailsForm.get('children') as FormArray).push(this.createChild());
+  }
+
+  deleteChild(index: number) {
+    (this.familyDetailsForm.get('children') as FormArray).removeAt(index);
   }
 
   createChild() {

@@ -1,5 +1,11 @@
-.input-padding {
-  padding: 1rem 1rem;
+.table-input {
   border: none;
   width: 100%;
+}
+.table-input.has-error {
+  border: 1px solid #a94442;
+}
+
+.padding-one {
+  padding: 1rem 1rem;
 }

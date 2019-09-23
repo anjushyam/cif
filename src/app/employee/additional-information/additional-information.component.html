@@ -1,1 +1,131 @@
-<p>additional-information works!</p>
+<div class="row section-container" [formGroup]="additionalDetailsForm">
+  <h4>Additional Information</h4>
+  <hr>
+  <div class="row form-group">
+    <div class="col-xs-6">
+      <label>Physical Disabilities, if any</label>
+      <textarea class="form-control" name="disabilities" formControlName="disabilities"></textarea>
+    </div>
+    <div class="col-xs-6">
+      <label>
+        Have you been involved in Court Proceeding <small>(If yes, please provide details on a separate sheet of paper)</small>?
+      </label>
+      <textarea class="form-control" name="courtProceeding" formControlName="courtProceeding"></textarea>
+    </div>
+  </div>
+  <div>
+    <p>Previously have you ever been interviewed in Devon? If yes, please provide details?</p>
+    <div class="row form-group" formGroupName="previousInterview">
+      <div class="col-xs-3">
+        <label for="when">When</label>
+        <input
+          type="text"
+          id="when"
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          name="when"
+          formControlName="when"
+          autocomplete="off"
+          ngbDatepicker
+          #when="ngbDatepicker"
+          (click)="when.open()"
+          ng-readonly="true"
+          [minDate]="{year: 2000, month: 12, day: 31}" />
+      </div>
+      <div class="col-xs-3">
+        <label for="position">Position</label>
+        <input
+          type="text"
+          id="position"
+          class="form-control"
+          name="position"
+          formControlName="position"
+          autocomplete="off" />
+      </div>
+      <div class="col-xs-6">
+        <label>Outcome</label>
+        <textarea class="form-control" name="outcome" formControlName="outcome"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-xs-6">
+      <label>Your Hobbies</label>
+      <textarea class="form-control" name="hobbies" formControlName="hobbies"></textarea>
+    </div>
+    <div class="col-xs-6">
+      <label>Your Interests</label>
+      <textarea class="form-control" name="interests" formControlName="interests"></textarea>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-xs-6">
+      <label>Your Goal/Aim in Life</label>
+      <textarea class="form-control" name="goal" formControlName="goal"></textarea>
+    </div>
+    <div class="col-xs-6">
+      <label>Principals/ideals which have guided you in life</label>
+      <textarea class="form-control" name="principals" formControlName="principals"></textarea>
+    </div>
+  </div>
+  <div>
+    <p>List down three of</p>
+    <div class="row form-group">
+      <div class="col-xs-6" formArrayName="strengths">
+        <label>Strengths</label>
+        <div class="form-group" *ngFor="let i of list">
+          <input class="form-control" type="text" name="{{i}}" formControlName="{{i}}" />
+        </div>
+      </div>
+      <div class="col-xs-6" formArrayName="weakness">
+        <label>Weakness</label>
+        <div class="form-group" *ngFor="let i of list">
+          <input class="form-control" type="text" name="{{i}}" formControlName="{{i}}" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p>Are you willing to Travel?</p>
+    <div class="row form-group" formGroupName="willingTravel">
+      <div class="col-xs-3">
+        <label>In India</label>
+        <input class="form-control" name="india" formControlName="india" />
+      </div>
+      <div class="col-xs-3">
+        <label>To Abroad</label>
+        <input class="form-control" name="abroad" formControlName="abroad" />
+      </div>
+      <div class="col-xs-6">
+        <label>State restrictions/problems if any</label>
+        <textarea class="form-control" name="restrictions" formControlName="restrictions"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-xs-6">
+      <label>Are you related to any ofthe employees? If yes, please refer the name</label>
+      <input class="form-control" name="employeeRelation" formControlName="employeeRelation" />
+    </div>
+    <div class="col-xs-6">
+      <label>Publication if any (list with specimen copy)</label>
+      <textarea class="form-control" name="publication" formControlName="publication"></textarea>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-xs-6">
+      <label>Any specialized Training Program attended</label>
+      <textarea class="form-control" name="trainingAttended" formControlName="trainingAttended"></textarea>
+    </div>
+    <div class="col-xs-6">
+      <label>Would you like to attend any specific Training</label>
+      <textarea class="form-control" name="trainingToAttend" formControlName="trainingToAttend"></textarea>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-xs-6">
+      <label>Any other information/Suggestion</label>
+      <textarea class="form-control" name="suggestion" formControlName="suggestion"></textarea>
+    </div>
+  </div>
+</div>

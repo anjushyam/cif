@@ -1,8 +1,9 @@
-<div class="row">
+<div class="row section-container">
   <h4>ID Details</h4>
+  <hr>
   <div [formGroup]="idDetailsForm">
-    <div class="col-xs-4">
-      <div class="row form-group">
+    <div class="row form-group">
+      <div class="col-xs-6">
         <label for="nationality">Nationality</label>
         <input
           required
@@ -16,14 +17,14 @@
           [ngClass]="{'has-error': (nationality.dirty || nationality.touched) && nationality.invalid}" />
         <span class="text-danger"
           *ngIf="(nationality.dirty || nationality.touched) && nationality.invalid && nationality.errors.required">
-          First Name is required
+          Nationality is required
         </span>
         <span class="text-danger"
           *ngIf="(nationality.dirty || nationality.touched) && nationality.invalid && nationality.errors.pattern">
           Only alphabets are allowed
         </span>
       </div>
-      <div class="row form-group">
+      <div class="col-xs-6">
         <label for="passportNumber">Passport Number</label>
         <input
           required
@@ -44,7 +45,9 @@
           Only alphabets & numbers are allowed
         </span>
       </div>
-      <div class="row form-group">
+    </div>
+    <div class="row form-group">
+      <div class="col-xs-6">
         <label for="pan">PAN</label>
         <input
           required
@@ -65,7 +68,7 @@
           Only alphabets & numbers are allowed
         </span>
       </div>
-      <div class="row form-group">
+      <div class="col-xs-6">
         <label for="nsrNumber">NASSCOM-NSR(NationalSkillsRegistry)ITPIN Number</label>
         <input
           required

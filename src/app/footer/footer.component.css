@@ -1,0 +1,9 @@
+.footer-section-container {
+  text-align: right;
+  background-color: #f8f8f8;
+  border: 1px solid #e7e7e7;
+  border-radius: 4px;
+  border-bottom: 0;
+  padding: 15px 10px;
+  margin: 10px 0;
+}

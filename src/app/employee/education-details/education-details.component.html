@@ -1,68 +1,97 @@
-<div class="row">
-  <h4>EDUCATION DETAILS</h4>
-  <div [formGroup]="educationalDetailsForm" class="container">
+<div class="row section-container">
+  <h4>Education Details</h4>
+  <hr>
+  <div [formGroup]="educationalDetailsForm">
     <table class="table table-bordered table-responsive-md table-striped text-center">
       <thead>
-        <th class="text-center">Qualification with Specialization</th>
-        <th class="text-center">Institution Name & City(School/College)</th>
-        <th class="text-center">University Name & City / Board Affiliated To</th>
-        <th class="text-center">StudentID/Reg No.</th>
-        <th class="text-center">Period of Qualification (From-To) yyyy</th>
-        <th class="text-center">Year of Passing</th>
-        <th class="text-center">Average % of marks / CGPA</th>
+        <th class="text-center padding-one">Qualification with Specialization</th>
+        <th class="text-center padding-one">Institution Name & City(School/College)</th>
+        <th class="text-center padding-one">University Name & City / Board Affiliated To</th>
+        <th class="text-center padding-one">StudentID/Reg No.</th>
+        <th class="text-center padding-one">Period of Qualification (From-To) yyyy</th>
+        <th class="text-center padding-one">Year of Passing</th>
+        <th class="text-center padding-one">Average % of marks / CGPA</th>
       </thead>
       <tbody>
         <tr *ngFor="let specialization of specializations" formGroupName="{{specialization}}">
           <td>
             <input
-              class="input-padding"
+              type="text"
+              required="{{ specialization !== 'postGraduation' }}"
+              class="table-input padding-one"
               name="specializationName"
-              formControlName="specializationName" />
+              formControlName="specializationName"
+              placeholder="{{ specializationsText[specialization] }}"
+              [ngClass]="{'has-error': hasError(specialization, 'specializationName')}" />
           </td>
           <td>
             <input
-              class="input-padding"
+              type="text"
+              required="{{ specialization !== 'postGraduation' }}"
+              class="table-input padding-one"
               name="institutionName"
               formControlName="institutionName"
-              contenteditable="true" />
+              [ngClass]="{'has-error': hasError(specialization, 'institutionName')}" />
           </td>
           <td>
             <input
-              class="input-padding"
+              type="text"
+              required="{{ specialization !== 'postGraduation' }}"
+              class="table-input padding-one"
               name="boardAffiliated"
               formControlName="boardAffiliated"
-              contenteditable="true" />
+              [ngClass]="{'has-error': hasError(specialization, 'boardAffiliated')}" />
           </td>
           <td>
             <input
-              class="input-padding"
+              type="text"
+              required="{{ specialization !== 'postGraduation' }}"
+              class="table-input padding-one"
               name="registerNumber"
               formControlName="registerNumber"
-              contenteditable="true" />
+              [ngClass]="{'has-error': hasError(specialization, 'registerNumber')}" />
           </td>
           <td>
             <input
-              class="input-padding"
+              type="text"
+              required="{{ specialization !== 'postGraduation' }}"
+              class="table-input padding-one"
               name="period"
               formControlName="period"
-              contenteditable="true" />
+              placeholder="yyyy-yyyy"
+              [ngClass]="{'has-error': hasError(specialization, 'period')}" />
           </td>
           <td>
             <input
-              class="input-padding"
+              min="1990"
+              type="number"
+              required="{{ specialization !== 'postGraduation' }}"
+              class="table-input padding-one"
               name="passingYear"
               formControlName="passingYear"
-              contenteditable="true" />
+              placeholder="yyyy"
+              [ngClass]="{'has-error': hasError(specialization, 'passingYear')}" />
           </td>
           <td>
             <input
-              class="input-padding"
+              type="number"
+              min="40"
+              max="100"
+              required="{{ specialization !== 'postGraduation' }}"
+              class="table-input padding-one"
               name="markScored"
+              placeholder="eg: 82"
               formControlName="markScored"
-              contenteditable="true" />
+              [ngClass]="{'has-error': hasError(specialization, 'specializationName')}" />
           </td>
         </tr>
       </tbody>
     </table>
+    <div class="row form-group">
+      <div class="col-xs-4">
+        <label for="gapReason">State reasons for gap in education (if any)</label>
+        <textarea class="form-control" id="gapReason" name="gapReason" formControlName="gapReason"></textarea>
+      </div>
+    </div>
   </div>
 </div>

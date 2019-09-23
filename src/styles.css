@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+.cif-form-container {
+  background-color: #ffffff;
+  border: 1px solid #e7e7e7;
+  border-radius: 4px;
+  border-top: 0;
+  margin-top: -20px;
+}
+
+.section-container {
+  background-color: #f8f8f8;
+  border: 1px solid #e7e7e7;
+  border-radius: 4px;
+  padding:10px;
+  margin:12px 4px;
+}
+
+.title-sixteen {
+  font-size: 16px;
+}

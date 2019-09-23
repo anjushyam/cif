@@ -12,15 +12,22 @@ export class EducationDetailsComponent implements OnInit {
   specializations = [
     'tenth', 'twelfth', 'graduation', 'postGraduation'
   ];
+  specializationsText = {
+    tenth : '10th',
+    twelfth : '12th',
+    graduation : 'Graduation Program',
+    postGraduation : 'Post Graduation Program'
+  };
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.educationalDetailsForm = this.fb.group({
-      tenth: this.createGroup({value: '10th', disabled: true}),
-      twelfth: this.createGroup({ value: '12th', disabled: true }),
-      graduation: this.createGroup({ value: 'Graduation Program', disabled: false }),
-      postGraduation: this.createGroup({ value: 'Post Graduation Program', disabled: false })
+      tenth: this.createGroup({value: '10th', disabled: false}),
+      twelfth: this.createGroup({ value: '12th', disabled: false }),
+      graduation: this.createGroup(''),
+      postGraduation: this.createGroup(''),
+      gapReason: this.fb.control('')
     });
   }
 
@@ -34,5 +41,10 @@ export class EducationDetailsComponent implements OnInit {
       passingYear: this.fb.control(''),
       markScored: this.fb.control('')
     });
+  }
+
+  hasError(specialization: string, fieldName: string) {
+    const fieldControl = this.educationalDetailsForm.get(specialization + '.' + fieldName);
+    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid ? true : false;
   }
 }

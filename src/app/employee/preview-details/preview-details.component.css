@@ -1,0 +1,44 @@
+.preview-section-container {
+  margin:12px 4px;
+  text-align: right;
+}
+
+.modal-backdrop.fade {
+  opacity: 0.5;
+}
+
+.modal-open .modal {
+  opacity: 1;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.modal-dialog {
+  width: 90% !important;
+  height: 80%;
+  transform: translate(0, -50%);
+  top: 15%;
+  margin: 0 auto;
+}
+
+.avatar-centered {
+  width: 180px;
+  margin: 0 auto;
+}
+
+.avatar-block {
+  border: 1px solid black;
+  width: 180px;
+  min-height: 180px;
+  line-height: 180px;
+  background-color: #ffffff;
+}
+
+.avatar-container {
+  display: inline-block;
+}
+
+.avatar {
+  width: 100%;
+}
+

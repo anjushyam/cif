@@ -18,6 +18,7 @@ import { ReferenceDetailsComponent } from './employee/reference-details/referenc
 import { EducationDetailsComponent } from './employee/education-details/education-details.component';
 import { EmploymentDetailsComponent } from './employee/employment-details/employment-details.component';
 import { AddressDetailsComponent } from './employee/address-details/address-details.component';
+import { PreviewDetailsComponent } from './employee/preview-details/preview-details.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AddressDetailsComponent } from './employee/address-details/address-deta
     ReferenceDetailsComponent,
     EducationDetailsComponent,
     EmploymentDetailsComponent,
-    AddressDetailsComponent
+    AddressDetailsComponent,
+    PreviewDetailsComponent
   ],
   imports: [
     BrowserModule,

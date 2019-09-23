@@ -19,7 +19,8 @@ export class AddressDetailsComponent implements OnInit {
     this.addressDetailsForm = this.fb.group({
       currentAddress: this.createAddress(),
       permanentAddress: this.createAddress(),
-      sameAddress: this.fb.control('')
+      sameAddress: this.fb.control(''),
+      remarks: this.fb.control('')
     });
   }
 
@@ -46,5 +47,20 @@ export class AddressDetailsComponent implements OnInit {
       (this.addressDetailsForm.get('permanentAddress') as FormGroup).reset();
       this.addressDetailsForm.get('sameAddress').setValue(0);
     }
+  }
+
+  hasError(addressType: string, fieldName: string) {
+    const fieldControl = this.addressDetailsForm.get(addressType + '.' + fieldName);
+    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid;
+  }
+
+  hasRequiredError(addressType: string, fieldName) {
+    const fieldControl = this.addressDetailsForm.get(addressType + '.' + fieldName);
+    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid && fieldControl.errors.required;
+  }
+
+  hasPatternError(addressType: string, fieldName) {
+    const fieldControl = this.addressDetailsForm.get(addressType + '.' + fieldName);
+    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid && fieldControl.errors.pattern;
   }
 }

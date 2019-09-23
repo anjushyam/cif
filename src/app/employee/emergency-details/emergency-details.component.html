@@ -1,8 +1,9 @@
-<div class="row">
-  <h4>EMERGENCY DETAILS</h4>
+<div class="row section-container">
+  <h4>Emergency Details</h4>
+  <hr>
   <div [formGroup]="emergencyDetailsForm">
-    <div class="col-xs-4">
-      <div class="row form-group">
+    <div class="row form-group">
+      <div class="col-xs-6">
         <label for="bloodGroup">Blood Group</label>
         <input
           required
@@ -18,7 +19,7 @@
           Blood Group is required
         </span>
       </div>
-      <div class="row form-group">
+      <div class="col-xs-6">
         <label for="bloodGroup">Allergic To</label>
         <textarea
           class="form-control"
@@ -26,7 +27,9 @@
           name="allergicTo"
           formControlName="allergicTo"></textarea>
       </div>
-      <div class="row form-group">
+    </div>
+    <div class="row form-group">
+      <div class="col-xs-6">
         <label for="bloodPressure">Blood Pressure</label>
         <input
           type="text"
@@ -36,7 +39,7 @@
           formControlName="bloodPressure"
           autocomplete="off" />
       </div>
-      <div class="row form-group">
+      <div class="col-xs-6">
         <label for="sugar">Sugar</label>
         <input
           type="text"
@@ -46,39 +49,46 @@
           formControlName="sugar"
           autocomplete="off" />
       </div>
+    </div>
+    <div>
+      <p>Eye Sight</p>
       <div class="row form-group">
-        <label>Eye Sight</label>
-        <div class="col-xs-4">
-          <label for="eyeSightLeft">Left</label>
-          <input
-            type="text"
-            class="form-control"
-            id="eyeSightLeft"
-            name="eyeSightLeft"
-            formControlName="eyeSightLeft"
-            autocomplete="off" />
+        <div class="col-xs-6">
+          <div class="col-xs-3">
+            <label for="eyeSightLeft">Left</label>
+            <input
+              type="text"
+              class="form-control"
+              id="eyeSightLeft"
+              name="eyeSightLeft"
+              formControlName="eyeSightLeft"
+              autocomplete="off" />
+          </div>
+          <div class="col-xs-3">
+            <label for="eyeSightRight">Right</label>
+            <input
+              type="text"
+              class="form-control"
+              id="eyeSightRight"
+              name="eyeSightRight"
+              formControlName="eyeSightRight"
+              autocomplete="off" />
+          </div>
         </div>
-        <div class="col-xs-4">
-          <label for="eyeSightRight">Right</label>
-          <input
-            type="text"
+        <div class="col-xs-6">
+          <label for="illness">Any major illness</label>
+          <textarea
             class="form-control"
-            id="eyeSightRight"
-            name="eyeSightRight"
-            formControlName="eyeSightRight"
-            autocomplete="off" />
+            id="illness"
+            name="illness"
+            formControlName="illness"></textarea>
         </div>
       </div>
-      <div class="row form-group">
-        <label for="illness">Any major illness</label>
-        <textarea
-          class="form-control"
-          id="illness"
-          name="illness"
-          formControlName="illness"></textarea>
-      </div>
-      <div class="row form-group">
-        <label for="emergencyContactName">Contact person in case of Emergency</label>
+    </div>
+    <div>
+      <p>Contact person in case of Emergency</p>
+      <div class="col-xs-3">
+        <label for="emergencyContactName">Name</label>
         <input
           required
           type="text"
@@ -93,22 +103,7 @@
           Contact Name is required
         </span>
       </div>
-      <div class="row form-group">
-        <label for="emergencyContactAddress">Address</label>
-        <textarea
-          required
-          class="form-control"
-          id="emergencyContactAddress"
-          name="emergencyContactAddress"
-          formControlName="emergencyContactAddress"
-          [ngClass]="{'has-error': (emergencyContactAddress.dirty || emergencyContactAddress.touched) && emergencyContactAddress.invalid}" >
-        </textarea>
-        <span class="text-danger"
-              *ngIf="(emergencyContactAddress.dirty || emergencyContactAddress.touched) && emergencyContactAddress.invalid && emergencyContactAddress.errors.required">
-          Address is required
-        </span>
-      </div>
-      <div class="row form-group">
+      <div class="col-xs-3">
         <label for="emergencyContactNumber">Phone number</label>
         <input
           required
@@ -122,6 +117,21 @@
         <span class="text-danger"
               *ngIf="(emergencyContactNumber.dirty || emergencyContactNumber.touched) && emergencyContactNumber.invalid && emergencyContactNumber.errors.required">
           EmergencyContact Name is required
+        </span>
+      </div>
+      <div class="col-xs-6">
+        <label for="emergencyContactAddress">Address</label>
+        <textarea
+          required
+          class="form-control"
+          id="emergencyContactAddress"
+          name="emergencyContactAddress"
+          formControlName="emergencyContactAddress"
+          [ngClass]="{'has-error': (emergencyContactAddress.dirty || emergencyContactAddress.touched) && emergencyContactAddress.invalid}" >
+        </textarea>
+        <span class="text-danger"
+              *ngIf="(emergencyContactAddress.dirty || emergencyContactAddress.touched) && emergencyContactAddress.invalid && emergencyContactAddress.errors.required">
+          Address is required
         </span>
       </div>
     </div>

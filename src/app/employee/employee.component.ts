@@ -1,11 +1,12 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { Employee } from './employee.model';
+import {Component, OnInit, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PersonalDetailsComponent } from './personal-details/personal-details.component';
 import { IdDetailsComponent } from './id-details/id-details.component';
 import { FamilyDetailsComponent } from './family-details/family-details.component';
 import { AddressDetailsComponent } from './address-details/address-details.component';
 import { EducationDetailsComponent } from './education-details/education-details.component';
+import { ReferenceDetailsComponent } from './reference-details/reference-details.component';
+import { AdditionalInformationComponent } from './additional-information/additional-information.component';
 import { EmergencyDetailsComponent } from './emergency-details/emergency-details.component';
 import { AuthorizationLetterComponent } from './authorization-letter/authorization-letter.component';
 
@@ -17,16 +18,18 @@ import { AuthorizationLetterComponent } from './authorization-letter/authorizati
 
 export class EmployeeComponent implements OnInit, AfterViewInit {
   employeeFormGroup: FormGroup;
-  employee: Employee = new Employee();
   imageURL: string;
 
-  @ViewChild(PersonalDetailsComponent, {static: true}) personalDetails;
-  @ViewChild(IdDetailsComponent, {static: true}) idDetails;
-  @ViewChild(FamilyDetailsComponent, {static: true}) familyDetails;
-  @ViewChild(AddressDetailsComponent, {static: true}) addressDetails;
-  @ViewChild(EducationDetailsComponent, {static: true}) educationalDetails;
-  @ViewChild(EmergencyDetailsComponent, {static: true}) emergencyDetails;
-  @ViewChild(AuthorizationLetterComponent, {static: true}) authorizationLetter;
+  @ViewChild(PersonalDetailsComponent, {static: false}) personalDetails;
+  @ViewChild(IdDetailsComponent, {static: false}) idDetails;
+  @ViewChild(FamilyDetailsComponent, {static: false}) familyDetails;
+  @ViewChild(AddressDetailsComponent, {static: false}) addressDetails;
+  @ViewChild(EducationDetailsComponent, {static: false}) educationalDetails;
+  @ViewChild('educationSection', {static: false}) educationSection: ElementRef;
+  @ViewChild(ReferenceDetailsComponent, {static: false}) referenceDetails;
+  @ViewChild(AdditionalInformationComponent, {static: false}) additionalDetails;
+  @ViewChild(EmergencyDetailsComponent, {static: false}) emergencyDetails;
+  @ViewChild(AuthorizationLetterComponent, {static: false}) authorizationLetter;
 
   constructor(private fb: FormBuilder) {}
 
@@ -54,6 +57,12 @@ export class EmployeeComponent implements OnInit, AfterViewInit {
 
     this.employeeFormGroup.addControl('educationalDetails', this.educationalDetails.educationalDetailsForm);
     this.educationalDetails.educationalDetailsForm.setParent(this.employeeFormGroup);
+
+    this.employeeFormGroup.addControl('referenceDetails', this.referenceDetails.referenceDetailsForm);
+    this.referenceDetails.referenceDetailsForm.setParent(this.employeeFormGroup);
+
+    this.employeeFormGroup.addControl('additionalDetails', this.additionalDetails.additionalDetailsForm);
+    this.additionalDetails.additionalDetailsForm.setParent(this.employeeFormGroup);
 
     this.employeeFormGroup.addControl('emergencyDetails', this.emergencyDetails.emergencyDetailsForm);
     this.emergencyDetails.emergencyDetailsForm.setParent(this.employeeFormGroup);
@@ -88,18 +97,15 @@ export class EmployeeComponent implements OnInit, AfterViewInit {
     this.showPreview(event);
   }
 
+  goToSection() {
+    this.educationSection.nativeElement.scrollIntoView({behavior: 'smooth'});
+  }
+
   get employeeName() {
     return this.employeeFormGroup.get('employeeName');
   }
 
   get employeeId() {
     return this.employeeFormGroup.get('employeeId');
-  }
-
-  addEmployee() {
-    if (this.employeeFormGroup.valid) {
-      this.employee = new Employee(this.employeeFormGroup.value);
-      console.log(this.employee);
-    }
   }
 }

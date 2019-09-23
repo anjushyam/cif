@@ -1,5 +1,6 @@
-<div class="row">
+<div class="row section-container">
   <h4>Family Details</h4>
+  <hr>
   <div [formGroup]="familyDetailsForm">
     <div class="row form-group">
       <div class="col-xs-4">
@@ -135,34 +136,65 @@
           [ngClass]="{'has-error': (spouseDob.dirty || spouseDob.touched) && spouseDob.invalid}" />
         <span class="text-danger"
           *ngIf="(spouseDob.dirty || spouseDob.touched) && spouseDob.invalid && spouseDob.errors.required">
-          Spouse's Date of birth is required
+          Date of birth is required
         </span>
       </div>
     </div>
-    <div class="row form-group">
+    <div>
       <div formArrayName="children">
         <div class="row form-group" *ngFor="let child of childrenControls(); let i = index" >
           <div formGroupName="{{i}}">
             <div class="col-xs-4">
               <label>Child {{ i+1 }} Name</label>
               <input
+                required
                 type="text"
                 class="form-control"
+                pattern="[a-zA-Z ]*"
                 formControlName="childName"
-                autocomplete="off"/>
+                autocomplete="off"
+                [ngClass]="{'has-error':
+                (children.controls[i].get('childName').dirty  || children.controls[i].get('childName').touched)
+                && children.controls[i].get('childName').invalid
+                }" />
+              <span class="text-danger"
+                *ngIf="(children.controls[i].get('childName').dirty || children.controls[i].get('childName').touched)
+                && children.controls[i].get('childName').invalid && children.controls[i].get('childName').errors.required">
+                Child Name is required
+              </span>
+              <span class="text-danger"
+                *ngIf="(children.controls[i].get('childName').dirty || children.controls[i].get('childName').touched)
+                && children.controls[i].get('childName').invalid && children.controls[i].get('childName').errors.pattern">
+                Only alphabets are allowed
+              </span>
             </div>
             <div class="col-xs-4">
               <label>Child {{ i+1 }} DOB</label>
               <input
+                required
                 type="text"
                 class="form-control"
+                placeholder="yyyy-mm-dd"
                 formControlName="childDob"
                 autocomplete="off"
                 ngbDatepicker
                 #cdob="ngbDatepicker"
                 (click)="cdob.open()"
                 ng-readonly="true"
-                [minDate]="{year: 2000, month: 01, day: 01}" />
+                [minDate]="{year: 2000, month: 01, day: 01}"
+                [ngClass]="{'has-error':
+                (children.controls[i].get('childDob').dirty || children.controls[i].get('childDob').touched)
+                && children.controls[i].get('childDob').invalid
+                }" />
+              <span class="text-danger"
+                *ngIf="(children.controls[i].get('childDob').dirty || children.controls[i].get('childDob').touched)
+                && children.controls[i].get('childDob').invalid && children.controls[i].get('childDob').errors.required">
+                Date of birth is required
+              </span>
+            </div>
+            <div class="col-xs-1">
+              <label></label>
+              <button class="btn btn-default" type="button" (click)="deleteChild(i)">Remove Child</button>
             </div>
           </div>
         </div>

@@ -1,1 +1,132 @@
-<p>reference-details works!</p>
+<div class="row section-container" [formGroup]="referenceDetailsForm">
+  <h4>Reference Details</h4>
+  <hr>
+  <p>Please provide details pertaining to only career experience. Personal details will be considered invalid</p>
+  <div *ngFor="let reference of references" formGroupName="{{reference}}">
+    <h4 class="title-sixteen">Reference {{reference}} (Supervisor)</h4>
+    <div class="row form-group">
+      <div class="col-xs-4 ">
+        <label>Name</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          pattern="[a-zA-Z ]*"
+          name="name"
+          formControlName="name"
+          autocomplete="off"
+          [ngClass]="{'has-error': hasError(reference+'.name')}" />
+        <span class="text-danger"
+              *ngIf="hasRequiredError(reference+'.name')">
+          Name is required
+        </span>
+        <span class="text-danger"
+              *ngIf="hasPatternError(reference+'.name')">
+          Only alphabets are allowed
+        </span>
+      </div>
+      <div class="col-xs-4 ">
+        <label>Designation</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          pattern="[a-zA-Z ]*"
+          name="designation"
+          formControlName="designation"
+          autocomplete="off"
+          [ngClass]="{'has-error': hasError(reference+'.designation')}" />
+        <span class="text-danger"
+              *ngIf="hasRequiredError(reference+'.designation')">
+          Designation is required
+        </span>
+        <span class="text-danger"
+              *ngIf="hasPatternError(reference+'.designation')">
+          Only alphabets are allowed
+        </span>
+      </div>
+      <div class="col-xs-4 ">
+        <label>Organization Name</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          pattern="[a-zA-Z ]*"
+          name="organization"
+          formControlName="organization"
+          autocomplete="off"
+          [ngClass]="{'has-error': hasError(reference+'.organization')}" />
+        <span class="text-danger"
+              *ngIf="hasRequiredError(reference+'.organization')">
+          Organization Name is required
+        </span>
+        <span class="text-danger"
+              *ngIf="hasPatternError(reference+'.organization')">
+          Only alphabets are allowed
+        </span>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-xs-4 ">
+        <label>Contact Number</label>
+        <input
+          required
+          type="number"
+          class="form-control"
+          pattern="[0-9+ ]*"
+          name="number"
+          formControlName="number"
+          autocomplete="off"
+            [ngClass]="{'has-error': hasError(reference+'.number')}" />
+          <span class="text-danger"
+                *ngIf="hasRequiredError(reference+'.number')">
+            Contact Number is required
+          </span>
+          <span class="text-danger"
+                *ngIf="hasPatternError(reference+'.number')">
+            Only numbers are allowed
+          </span>
+      </div>
+      <div class="col-xs-4 ">
+        <label>Email ID</label>
+        <input
+          required
+          type="email"
+          class="form-control"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          name="email"
+          formControlName="email"
+          autocomplete="off"
+            [ngClass]="{'has-error': hasError(reference+'.email')}" />
+          <span class="text-danger"
+                *ngIf="hasRequiredError(reference+'.email')">
+            Email ID is required
+          </span>
+          <span class="text-danger"
+                *ngIf="hasPatternError(reference+'.email')">
+            Invalid format
+          </span>
+      </div>
+      <div class="col-xs-4 ">
+        <label>Period of Acquaintance <small>(Example: Sept 07 to July 10)</small></label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          pattern="[a-zA-Z0-9 ]*"
+          name="period"
+          formControlName="period"
+          autocomplete="off"
+            [ngClass]="{'has-error': hasError(reference+'.period')}" />
+          <span class="text-danger"
+                *ngIf="hasRequiredError(reference+'.period')">
+            Period of Acquaintance is required
+          </span>
+          <span class="text-danger"
+                *ngIf="hasPatternError(reference+'.period')">
+            Only alphabets and numbers are allowed
+          </span>
+      </div>
+    </div>
+  </div>
+</div>

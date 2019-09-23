@@ -1,5 +1,6 @@
-<div class="row">
-  <h4>EMPLOYMENT DETAILS</h4>
+<div class="row section-container">
+  <h4>Employment Details</h4>
+  <hr>
   <ol class="text-danger">
     <li>
       <p>
@@ -18,111 +19,312 @@
       </p>
     </li>
   </ol>
+  <br>
   <div [formGroup]="employeeFormGroup">
-    <div class="row form-group">
       <div formArrayName="previousEmployers">
-        <div class="col-xs-4" *ngFor="let employer of employersControls(); let i = index" >
+        <div *ngFor="let employer of employersControls(); let i = index" >
           <div formGroupName="{{i}}">
-            <label>Employer {{ i+1 }}</label>
+            <h4 class="title-sixteen">Employer {{ i+1 }}</h4>
             <div class="row form-group">
-              <label>Organization Name</label>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="organizationName"
-                autocomplete="off"/>
+              <div class="col-xs-6">
+                <label>Organization Name</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control"
+                  pattern="[a-zA-Z0-9 ]*"
+                  formControlName="organizationName"
+                  autocomplete="off"
+                  [ngClass]="{'has-error': hasError(i, 'organizationName')}" />
+                <span class="text-danger"
+                  *ngIf="hasRequiredError(i, 'organizationName')">
+                  Organization Name is required
+                </span>
+                <span class="text-danger"
+                  *ngIf="hasPatternError(i, 'organizationName')">
+                  Only alphabets and numbers are allowed
+                </span>
+              </div>
+              <div class="col-xs-6">
+                <label>Address (Branch Name)</label>
+                <textarea
+                  required
+                  class="form-control"
+                  formControlName="address"
+                  [ngClass]="{'has-error': hasError(i, 'address')}">
+                </textarea>
+                <span class="text-danger"
+                      *ngIf="hasRequiredError(i, 'address')">
+                  Address is required
+                </span>
+              </div>
             </div>
             <div class="row form-group">
-              <label>Address (Branch Name)</label>
-              <textarea
-                class="form-control"
-                formControlName="address">
-              </textarea>
+              <div class="col-xs-6">
+                <label>Employee ID</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control"
+                  formControlName="employeeId"
+                  autocomplete="off"
+                  [ngClass]="{'has-error': hasError(i, 'employeeId')}" />
+                <span class="text-danger"
+                      *ngIf="hasRequiredError(i, 'employeeId')">
+                  Employee ID is required
+                </span>
+                <span class="text-danger"
+                      *ngIf="hasPatternError(i, 'employeeId')">
+                  Only alphabets and numbers are allowed
+                </span>
+              </div>
+              <div class="col-xs-6">
+                <label>Type of Employment</label>
+                <div class="radio">
+                  <label>
+                    <input name="employmentType" type="radio" value="permanent" formControlName="employmentType" />Permanent
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input name="employmentType" type="radio" value="contract" formControlName="employmentType" />Contract
+                  </label>
+                </div>
+              </div>
             </div>
             <div class="row form-group">
-              <label>Employee ID</label>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="employeeId"
-                autocomplete="off"/>
+              <div class="col-xs-6" formGroupName="employmentPeriod">
+                <p style="font-weight: 700;">Period of Employment</p>
+                  <div class="col-xs-4">
+                    <input
+                      required
+                      type="text"
+                      class="form-control"
+                      placeholder="yyyy-mm-dd"
+                      name="from"
+                      formControlName="from"
+                      autocomplete="off"
+                      ngbDatepicker
+                      #periodFromDob="ngbDatepicker"
+                      (click)="periodFromDob.open()"
+                      ng-readonly="true"
+                      [minDate]="{year: 1900, month: 01, day: 01}"
+                      [ngClass]="{'has-error': hasError(i, 'employmentPeriod.from')}" />
+                    <span class="text-danger"
+                      *ngIf="hasRequiredError(i, 'employmentPeriod.from')">
+                      From date is required
+                    </span>
+                  </div>
+                  <div style="float: left; height: 34px;">
+                    <span style="vertical-align: middle;"> - </span>
+                  </div>
+                  <div class="col-xs-4">
+                    <input
+                      required
+                      type="text"
+                      class="form-control"
+                      placeholder="yyyy-mm-dd"
+                      name="to"
+                      formControlName="to"
+                      autocomplete="off"
+                      ngbDatepicker
+                      #periodToDob="ngbDatepicker"
+                      (click)="periodToDob.open()"
+                      ng-readonly="true"
+                      [minDate]="{year: 1900, month: 01, day: 01}"
+                      [ngClass]="{'has-error': hasError(i, 'employmentPeriod.to')}" />
+                    <span class="text-danger"
+                      *ngIf="hasRequiredError(i, 'employmentPeriod.to')">
+                      To date is required
+                    </span>
+                  </div>
+              </div>
+              <div class="col-xs-6">
+                <label>Last Designation held</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control"
+                  formControlName="lastDesignation"
+                  pattern="[a-zA-Z ]*"
+                  autocomplete="off"
+                  [ngClass]="{'has-error': hasError(i, 'lastDesignation')}" />
+                <span class="text-danger"
+                  *ngIf="hasRequiredError(i, 'lastDesignation')">
+                  Designation Name is required
+                </span>
+                <span class="text-danger"
+                  *ngIf="hasPatternError(i, 'lastDesignation')">
+                  Only alphabets are allowed
+                </span>
+              </div>
             </div>
             <div class="row form-group">
-              <label>Type of Employment --CHANGE</label>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="employmentType"
-                autocomplete="off"/>
+              <div class="col-xs-6">
+                <label>Last Drawn Salary</label>
+                <input
+                  required
+                  type="number"
+                  class="form-control"
+                  formControlName="lastSalary"
+                  autocomplete="off"
+                  [ngClass]="{'has-error': hasError(i, 'lastSalary')}" />
+                <span class="text-danger"
+                  *ngIf="hasRequiredError(i, 'lastSalary')">
+                  Salary is required
+                </span>
+              </div>
             </div>
-            <div class="row form-group">
-              <label>Period of Employment --CHANGE</label>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="employmentPeriod"
-                autocomplete="off"/>
+            <div class="row form-group" formGroupName="reportedTo">
+              <h4 class="title-sixteen" style="margin-left: 15px;">Reported To</h4>
+              <div class="col-xs-4">
+                <label>Name</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control"
+                  formControlName="name"
+                  pattern="[a-zA-Z ]*"
+                  autocomplete="off"
+                  [ngClass]="{'has-error': hasError(i, 'reportedTo.name')}" />
+                <span class="text-danger"
+                      *ngIf="hasRequiredError(i, 'reportedTo.name')">
+                  Name is required
+                </span>
+                <span class="text-danger"
+                      *ngIf="hasPatternError(i, 'reportedTo.name')">
+                  Only alphabets are allowed
+                </span>
+              </div>
+              <div class="col-xs-4">
+                <label>Designation</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control"
+                  pattern="[a-zA-Z ]*"
+                  formControlName="designation"
+                  autocomplete="off"
+                  [ngClass]="{'has-error': hasError(i, 'reportedTo.designation')}" />
+                  <span class="text-danger"
+                        *ngIf="hasRequiredError(i, 'reportedTo.designation')">
+                    Designation Name is required
+                  </span>
+                  <span class="text-danger"
+                        *ngIf="hasPatternError(i, 'reportedTo.designation')">
+                    Only alphabets are allowed
+                  </span>
             </div>
-            <div class="row form-group">
-              <label>Last Designation held</label>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="lastDesignation"
-                autocomplete="off"/>
-            </div>
-            <div class="row form-group">
-              <label>Last Drawn Salary</label>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="lastSalary"
-                autocomplete="off"/>
-            </div>
-            <div class="row form-group">
-              <label>Reported To</label>
-              <label>Name</label>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="reportedToName"
-                autocomplete="off"/>
-            </div>
-            <div class="row form-group">
-              <label>Designation</label>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="reportedToDesignation"
-                autocomplete="off"/>
-            </div>
-            <div class="row form-group">
+              <div class="col-xs-4">
               <label>Contact No</label>
               <input
+                required
                 type="text"
                 class="form-control"
-                formControlName="reportedToNumber"
-                autocomplete="off"/>
+                pattern="[0-9+ ]*"
+                formControlName="number"
+                autocomplete="off"
+                [ngClass]="{'has-error': hasError(i, 'reportedTo.number')}" />
+                <span class="text-danger"
+                  *ngIf="hasRequiredError(i, 'reportedTo.number')">
+                  Contact No is required
+                </span>
+                <span class="text-danger"
+                  *ngIf="hasPatternError(i, 'reportedTo.number')">
+                  Only numbers are allowed
+                </span>
+            </div>
             </div>
             <div class="row form-group">
-              <label>Reason for Leaving</label>
-              <textarea
-                class="form-control"
-                formControlName="reasonForLeaving">
-              </textarea>
+              <div class="col-xs-6">
+                <label>Reason for Leaving</label>
+                <textarea
+                  required
+                  class="form-control"
+                  formControlName="reasonForLeaving"
+                  [ngClass]="{'has-error': hasError(i, 'reasonForLeaving')}">
+                </textarea>
+                <span class="text-danger"
+                  *ngIf="hasRequiredError(i, 'reasonForLeaving')">
+                  Reason is required
+                </span>
+              </div>
             </div>
             <div class="row form-group">
-              <label>Mode of Separation</label>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="separationMode"
-                autocomplete="off"/>
+              <div class="col-xs-6">
+                <label>Mode of Separation</label>
+                <div class="radio">
+                  <label>
+                    <input
+                      name="separationMode"
+                      type="radio"
+                      value="resignation"
+                      formControlName="separationMode"
+                      (click)="showSeparationReason(i, 'resignation')" />Resignation
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input
+                      name="separationMode"
+                      type="radio"
+                      value="termination"
+                      formControlName="separationMode"
+                      (click)="showSeparationReason(i, 'termination')" />Termination
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input
+                      name="separationMode"
+                      type="radio"
+                      value="absconded"
+                      formControlName="separationMode"
+                      (click)="showSeparationReason(i, 'absconded')" />Absconded
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input
+                      name="separationMode"
+                      type="radio"
+                      value="operationsClosed"
+                      formControlName="separationMode"
+                      (click)="showSeparationReason(i, 'operationsClosed')" />Closed Operations
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input
+                      name="separationMode"
+                      type="radio"
+                      value="other"
+                      formControlName="separationMode"
+                      (click)="showSeparationReason(i, 'other')" />Other
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="separationReasonEle[i]" class="row form-group">
+              <div class="col-xs-6">
+                <label>Specify the reason</label>
+                <textarea
+                  required
+                  class="form-control"
+                  formControlName="separationReason"
+                  [ngClass]="{'has-error': hasError(i, 'separationReason')}">
+                </textarea>
+                <span class="text-danger"
+                  *ngIf="hasRequiredError(i, 'separationReason')">
+                  Reason is required
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <button class="btn btn-default" type="button" (click)="addEmployer()">Add Employer</button>
-    </div>
+      <div>
+        <button class="btn btn-default" type="button" (click)="addEmployer()">Add Employer</button>
+      </div>
   </div>
 </div>

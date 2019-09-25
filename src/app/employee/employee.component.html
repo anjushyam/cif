@@ -31,15 +31,9 @@
           pattern="[a-zA-Z ]*"
           formControlName="employeeName"
           autocomplete="off"
-          [ngClass]="{'has-error': (employeeName.dirty || employeeName.touched) && employeeName.invalid}" />
-        <span class="text-danger"
-              *ngIf="(employeeName.dirty || employeeName.touched) && employeeName.invalid && employeeName.errors.required">
-        Employee Name is required
-      </span>
-        <span class="text-danger"
-              *ngIf="(employeeName.dirty || employeeName.touched) && employeeName.invalid && employeeName.errors.pattern">
-        Only alphabets are allowed
-      </span>
+          [requiredErrorMessage]="'Employee Name is required'"
+          [patternErrorMessage]="'Only alphabets are allowed'"
+          [appValidate]="employeeFormGroup.get('employeeName')" />
       </div>
       <div class="row form-group">
         <label for="employeeId">Employee ID</label>
@@ -52,15 +46,9 @@
           pattern="[a-zA-Z0-9]*"
           formControlName="employeeId"
           autocomplete="off"
-          [ngClass]="{'has-error': (employeeId.dirty || employeeId.touched) && employeeId.invalid}" />
-        <span class="text-danger"
-              *ngIf="(employeeId.dirty || employeeId.touched) && employeeId.invalid && employeeId.errors.required">
-        Employee ID is required
-      </span>
-        <span class="text-danger"
-              *ngIf="(employeeId.dirty || employeeId.touched) && employeeId.invalid && employeeId.errors.pattern">
-        Only alphabets and numbers are allowed
-      </span>
+          [requiredErrorMessage]="'Employee ID is required'"
+          [patternErrorMessage]="'Only alphabets and numbers are allowed'"
+          [appValidate]="employeeFormGroup.get('employeeId')" />
       </div>
     </div>
   </div>
@@ -74,5 +62,5 @@
   <app-additional-information></app-additional-information>
   <app-emergency-details></app-emergency-details>
   <app-authorization-letter></app-authorization-letter>
-  <app-preview-details (employeeEvent)="goToSection()" [employeeFormGroup]="employeeFormGroup"></app-preview-details>
+  <app-preview-details [imageURL]="imageURL" (employeeEvent)="goToSection()" [employeeFormGroup]="employeeFormGroup"></app-preview-details>
 </form>

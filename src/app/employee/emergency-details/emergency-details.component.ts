@@ -25,20 +25,4 @@ export class EmergencyDetailsComponent implements OnInit {
       emergencyContactNumber: ['', Validators.required]
     });
   }
-
-  get bloodGroup() {
-    return this.emergencyDetailsForm.get('bloodGroup');
-  }
-
-  get emergencyContactName() {
-    return this.emergencyDetailsForm.get('emergencyContactName');
-  }
-
-  get emergencyContactAddress() {
-    return this.emergencyDetailsForm.get('emergencyContactAddress');
-  }
-
-  get emergencyContactNumber() {
-    return this.emergencyDetailsForm.get('emergencyContactNumber');
-  }
 }

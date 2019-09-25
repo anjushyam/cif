@@ -48,19 +48,4 @@ export class AddressDetailsComponent implements OnInit {
       this.addressDetailsForm.get('sameAddress').setValue(0);
     }
   }
-
-  hasError(addressType: string, fieldName: string) {
-    const fieldControl = this.addressDetailsForm.get(addressType + '.' + fieldName);
-    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid;
-  }
-
-  hasRequiredError(addressType: string, fieldName) {
-    const fieldControl = this.addressDetailsForm.get(addressType + '.' + fieldName);
-    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid && fieldControl.errors.required;
-  }
-
-  hasPatternError(addressType: string, fieldName) {
-    const fieldControl = this.addressDetailsForm.get(addressType + '.' + fieldName);
-    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid && fieldControl.errors.pattern;
-  }
 }

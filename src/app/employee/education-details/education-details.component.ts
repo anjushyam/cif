@@ -42,9 +42,4 @@ export class EducationDetailsComponent implements OnInit {
       markScored: this.fb.control('')
     });
   }
-
-  hasError(specialization: string, fieldName: string) {
-    const fieldControl = this.educationalDetailsForm.get(specialization + '.' + fieldName);
-    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid ? true : false;
-  }
 }

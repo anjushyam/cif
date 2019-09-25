@@ -52,19 +52,4 @@ export class EmploymentDetailsComponent implements OnInit {
   showSeparationReason(index, value) {
     this.separationReasonEle[index] = (value === 'other');
   }
-
-  hasError(index: number, fieldName: string) {
-    const fieldControl = (this.employeeFormGroup.get('previousEmployers') as FormArray).controls[index].get(fieldName);
-    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid;
-  }
-
-  hasRequiredError(index: number, fieldName: string) {
-    const fieldControl = (this.employeeFormGroup.get('previousEmployers') as FormArray).controls[index].get(fieldName);
-    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid && fieldControl.errors.required;
-  }
-
-  hasPatternError(index: number, fieldName: string) {
-    const fieldControl = (this.employeeFormGroup.get('previousEmployers') as FormArray).controls[index].get(fieldName);
-    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid && fieldControl.errors.pattern;
-  }
 }

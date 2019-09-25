@@ -35,15 +35,9 @@
                   pattern="[a-zA-Z0-9 ]*"
                   formControlName="organizationName"
                   autocomplete="off"
-                  [ngClass]="{'has-error': hasError(i, 'organizationName')}" />
-                <span class="text-danger"
-                  *ngIf="hasRequiredError(i, 'organizationName')">
-                  Organization Name is required
-                </span>
-                <span class="text-danger"
-                  *ngIf="hasPatternError(i, 'organizationName')">
-                  Only alphabets and numbers are allowed
-                </span>
+                  [requiredErrorMessage]="'Organization Name is required'"
+                  [patternErrorMessage]="'Only alphabets and numbers are allowed'"
+                  [appValidate]="employer.get('organizationName')" />
               </div>
               <div class="col-xs-6">
                 <label>Address (Branch Name)</label>
@@ -51,12 +45,9 @@
                   required
                   class="form-control"
                   formControlName="address"
-                  [ngClass]="{'has-error': hasError(i, 'address')}">
+                  [requiredErrorMessage]="'Address is required'"
+                  [appValidate]="employer.get('address')" >
                 </textarea>
-                <span class="text-danger"
-                      *ngIf="hasRequiredError(i, 'address')">
-                  Address is required
-                </span>
               </div>
             </div>
             <div class="row form-group">
@@ -68,15 +59,9 @@
                   class="form-control"
                   formControlName="employeeId"
                   autocomplete="off"
-                  [ngClass]="{'has-error': hasError(i, 'employeeId')}" />
-                <span class="text-danger"
-                      *ngIf="hasRequiredError(i, 'employeeId')">
-                  Employee ID is required
-                </span>
-                <span class="text-danger"
-                      *ngIf="hasPatternError(i, 'employeeId')">
-                  Only alphabets and numbers are allowed
-                </span>
+                  [requiredErrorMessage]="'Employee ID is required'"
+                  [patternErrorMessage]="'Only alphabets and numbers are allowed'"
+                  [appValidate]="employer.get('employeeId')" />
               </div>
               <div class="col-xs-6">
                 <label>Type of Employment</label>
@@ -109,11 +94,8 @@
                       (click)="periodFromDob.open()"
                       ng-readonly="true"
                       [minDate]="{year: 1900, month: 01, day: 01}"
-                      [ngClass]="{'has-error': hasError(i, 'employmentPeriod.from')}" />
-                    <span class="text-danger"
-                      *ngIf="hasRequiredError(i, 'employmentPeriod.from')">
-                      From date is required
-                    </span>
+                      [requiredErrorMessage]="'From date is required'"
+                      [appValidate]="employer.get('employmentPeriod.from')" />
                   </div>
                   <div style="float: left; height: 34px;">
                     <span style="vertical-align: middle;"> - </span>
@@ -132,11 +114,8 @@
                       (click)="periodToDob.open()"
                       ng-readonly="true"
                       [minDate]="{year: 1900, month: 01, day: 01}"
-                      [ngClass]="{'has-error': hasError(i, 'employmentPeriod.to')}" />
-                    <span class="text-danger"
-                      *ngIf="hasRequiredError(i, 'employmentPeriod.to')">
-                      To date is required
-                    </span>
+                      [requiredErrorMessage]="'To date is required'"
+                      [appValidate]="employer.get('employmentPeriod.to')" />
                   </div>
               </div>
               <div class="col-xs-6">
@@ -148,15 +127,9 @@
                   formControlName="lastDesignation"
                   pattern="[a-zA-Z ]*"
                   autocomplete="off"
-                  [ngClass]="{'has-error': hasError(i, 'lastDesignation')}" />
-                <span class="text-danger"
-                  *ngIf="hasRequiredError(i, 'lastDesignation')">
-                  Designation Name is required
-                </span>
-                <span class="text-danger"
-                  *ngIf="hasPatternError(i, 'lastDesignation')">
-                  Only alphabets are allowed
-                </span>
+                  [requiredErrorMessage]="'Designation Name is required'"
+                  [patternErrorMessage]="'Only alphabets and are allowed'"
+                  [appValidate]="employer.get('lastDesignation')" />
               </div>
             </div>
             <div class="row form-group">
@@ -168,11 +141,8 @@
                   class="form-control"
                   formControlName="lastSalary"
                   autocomplete="off"
-                  [ngClass]="{'has-error': hasError(i, 'lastSalary')}" />
-                <span class="text-danger"
-                  *ngIf="hasRequiredError(i, 'lastSalary')">
-                  Salary is required
-                </span>
+                  [requiredErrorMessage]="'Salary is required'"
+                  [appValidate]="employer.get('lastSalary')" />
               </div>
             </div>
             <div class="row form-group" formGroupName="reportedTo">
@@ -186,15 +156,9 @@
                   formControlName="name"
                   pattern="[a-zA-Z ]*"
                   autocomplete="off"
-                  [ngClass]="{'has-error': hasError(i, 'reportedTo.name')}" />
-                <span class="text-danger"
-                      *ngIf="hasRequiredError(i, 'reportedTo.name')">
-                  Name is required
-                </span>
-                <span class="text-danger"
-                      *ngIf="hasPatternError(i, 'reportedTo.name')">
-                  Only alphabets are allowed
-                </span>
+                  [requiredErrorMessage]="'Name is required'"
+                  [patternErrorMessage]="'Only alphabets are allowed'"
+                  [appValidate]="employer.get('reportedTo.name')" />
               </div>
               <div class="col-xs-4">
                 <label>Designation</label>
@@ -205,15 +169,9 @@
                   pattern="[a-zA-Z ]*"
                   formControlName="designation"
                   autocomplete="off"
-                  [ngClass]="{'has-error': hasError(i, 'reportedTo.designation')}" />
-                  <span class="text-danger"
-                        *ngIf="hasRequiredError(i, 'reportedTo.designation')">
-                    Designation Name is required
-                  </span>
-                  <span class="text-danger"
-                        *ngIf="hasPatternError(i, 'reportedTo.designation')">
-                    Only alphabets are allowed
-                  </span>
+                  [requiredErrorMessage]="'Designation Name is required'"
+                  [patternErrorMessage]="'Only alphabets are allowed'"
+                  [appValidate]="employer.get('reportedTo.designation')" />
             </div>
               <div class="col-xs-4">
               <label>Contact No</label>
@@ -224,15 +182,9 @@
                 pattern="[0-9+ ]*"
                 formControlName="number"
                 autocomplete="off"
-                [ngClass]="{'has-error': hasError(i, 'reportedTo.number')}" />
-                <span class="text-danger"
-                  *ngIf="hasRequiredError(i, 'reportedTo.number')">
-                  Contact No is required
-                </span>
-                <span class="text-danger"
-                  *ngIf="hasPatternError(i, 'reportedTo.number')">
-                  Only numbers are allowed
-                </span>
+                [requiredErrorMessage]="'Contact No is required'"
+                [patternErrorMessage]="'Only numbers are allowed'"
+                [appValidate]="employer.get('reportedTo.number')" />
             </div>
             </div>
             <div class="row form-group">
@@ -242,12 +194,9 @@
                   required
                   class="form-control"
                   formControlName="reasonForLeaving"
-                  [ngClass]="{'has-error': hasError(i, 'reasonForLeaving')}">
+                  [requiredErrorMessage]="'Reason is required'"
+                  [appValidate]="employer.get('reasonForLeaving')" >
                 </textarea>
-                <span class="text-danger"
-                  *ngIf="hasRequiredError(i, 'reasonForLeaving')">
-                  Reason is required
-                </span>
               </div>
             </div>
             <div class="row form-group">
@@ -312,12 +261,9 @@
                   required
                   class="form-control"
                   formControlName="separationReason"
-                  [ngClass]="{'has-error': hasError(i, 'separationReason')}">
+                  [requiredErrorMessage]="'Reason is required'"
+                  [appValidate]="employer.get('separationReason')" >
                 </textarea>
-                <span class="text-danger"
-                  *ngIf="hasRequiredError(i, 'separationReason')">
-                  Reason is required
-                </span>
               </div>
             </div>
           </div>

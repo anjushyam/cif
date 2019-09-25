@@ -25,41 +25,4 @@ export class PersonalDetailsComponent implements OnInit {
         emailId: ['', Validators.required],
     });
   }
-
-  get namePrefix() {
-    return this.personalDetailsForm.get('namePrefix');
-  }
-
-  get firstName() {
-    return this.personalDetailsForm.get('firstName');
-  }
-
-  get middleName() {
-    return this.personalDetailsForm.get('middleName');
-  }
-
-  get lastName() {
-    return this.personalDetailsForm.get('lastName');
-  }
-
-  get gender() {
-    return this.personalDetailsForm.get('gender');
-  }
-
-  get dob() {
-    return this.personalDetailsForm.get('dob');
-  }
-
-  get pob() {
-    return this.personalDetailsForm.get('pob');
-  }
-
-  get mobileNumber() {
-    return this.personalDetailsForm.get('mobileNumber');
-  }
-
-  get emailId() {
-    return this.personalDetailsForm.get('emailId');
-  }
-
 }

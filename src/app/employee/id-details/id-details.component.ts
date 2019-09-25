@@ -19,21 +19,4 @@ export class IdDetailsComponent implements OnInit {
       nsrNumber: ['', Validators.required],
     });
   }
-
-  get nationality() {
-    return this.idDetailsForm.get('nationality');
-  }
-
-  get passportNumber() {
-    return this.idDetailsForm.get('passportNumber');
-  }
-
-  get pan() {
-    return this.idDetailsForm.get('pan');
-  }
-
-  get nsrNumber() {
-    return this.idDetailsForm.get('nsrNumber');
-  }
-
 }

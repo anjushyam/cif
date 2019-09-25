@@ -13,11 +13,8 @@
           name="bloodGroup"
           formControlName="bloodGroup"
           autocomplete="off"
-          [ngClass]="{'has-error': (bloodGroup.dirty || bloodGroup.touched) && bloodGroup.invalid}" />
-        <span class="text-danger"
-              *ngIf="(bloodGroup.dirty || bloodGroup.touched) && bloodGroup.invalid && bloodGroup.errors.required">
-          Blood Group is required
-        </span>
+          [requiredErrorMessage]="'Blood Group is required'"
+          [appValidate]="emergencyDetailsForm.get('bloodGroup')" />
       </div>
       <div class="col-xs-6">
         <label for="bloodGroup">Allergic To</label>
@@ -97,11 +94,8 @@
           name="emergencyContactName"
           formControlName="emergencyContactName"
           autocomplete="off"
-          [ngClass]="{'has-error': (emergencyContactName.dirty || emergencyContactName.touched) && emergencyContactName.invalid}" />
-        <span class="text-danger"
-              *ngIf="(emergencyContactName.dirty || emergencyContactName.touched) && emergencyContactName.invalid && emergencyContactName.errors.required">
-          Contact Name is required
-        </span>
+          [requiredErrorMessage]="'Contact Name is required'"
+          [appValidate]="emergencyDetailsForm.get('emergencyContactName')" />
       </div>
       <div class="col-xs-3">
         <label for="emergencyContactNumber">Phone number</label>
@@ -113,11 +107,8 @@
           name="emergencyContactNumber"
           formControlName="emergencyContactNumber"
           autocomplete="off"
-          [ngClass]="{'has-error': (emergencyContactNumber.dirty || emergencyContactNumber.touched) && emergencyContactNumber.invalid}" />
-        <span class="text-danger"
-              *ngIf="(emergencyContactNumber.dirty || emergencyContactNumber.touched) && emergencyContactNumber.invalid && emergencyContactNumber.errors.required">
-          EmergencyContact Name is required
-        </span>
+          [requiredErrorMessage]="'Contact Number is required'"
+          [appValidate]="emergencyDetailsForm.get('emergencyContactNumber')" />
       </div>
       <div class="col-xs-6">
         <label for="emergencyContactAddress">Address</label>
@@ -127,12 +118,9 @@
           id="emergencyContactAddress"
           name="emergencyContactAddress"
           formControlName="emergencyContactAddress"
-          [ngClass]="{'has-error': (emergencyContactAddress.dirty || emergencyContactAddress.touched) && emergencyContactAddress.invalid}" >
+          [requiredErrorMessage]="'Address is required'"
+          [appValidate]="emergencyDetailsForm.get('emergencyContactAddress')" >
         </textarea>
-        <span class="text-danger"
-              *ngIf="(emergencyContactAddress.dirty || emergencyContactAddress.touched) && emergencyContactAddress.invalid && emergencyContactAddress.errors.required">
-          Address is required
-        </span>
       </div>
     </div>
   </div>

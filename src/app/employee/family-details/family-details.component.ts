@@ -23,34 +23,6 @@ export class FamilyDetailsComponent implements OnInit {
     });
   }
 
-  get fatherName() {
-    return this.familyDetailsForm.get('fatherName');
-  }
-
-  get fatherDob() {
-    return this.familyDetailsForm.get('fatherDob');
-  }
-
-  get motherName() {
-    return this.familyDetailsForm.get('motherName');
-  }
-
-  get motherDob() {
-    return this.familyDetailsForm.get('motherDob');
-  }
-
-  get spouseName() {
-    return this.familyDetailsForm.get('spouseName');
-  }
-
-  get spouseDob() {
-    return this.familyDetailsForm.get('spouseDob');
-  }
-
-  get children() {
-    return (this.familyDetailsForm.get('children') as FormArray);
-  }
-
   childrenControls() {
     return (this.familyDetailsForm.get('children') as FormArray).controls;
   }

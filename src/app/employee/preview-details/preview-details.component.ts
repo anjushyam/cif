@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import { Employee } from '../employee.model';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Employee } from '@employee/employee.model';
 import { FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -11,6 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class PreviewDetailsComponent implements OnInit {
   @Input() employeeFormGroup: FormGroup;
+  @Input() imageURL: string;
   employee: Employee = new Employee();
   @Output() employeeEvent = new EventEmitter();
 

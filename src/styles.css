@@ -18,3 +18,7 @@
 .title-sixteen {
   font-size: 16px;
 }
+
+.ng-invalid .has-error {
+  border: 1px solid red;
+}

@@ -29,19 +29,4 @@ export class ReferenceDetailsComponent implements OnInit {
       period: this.fb.control('')
     });
   }
-
-  hasError(fieldName: string) {
-    const fieldControl = this.referenceDetailsForm.get(fieldName);
-    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid;
-  }
-
-  hasRequiredError(fieldName: string) {
-    const fieldControl = this.referenceDetailsForm.get(fieldName);
-    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid && fieldControl.errors.required;
-  }
-
-  hasPatternError(fieldName: string) {
-    const fieldControl = this.referenceDetailsForm.get(fieldName);
-    return (fieldControl.dirty || fieldControl.touched) && fieldControl.invalid && fieldControl.errors.pattern;
-  }
 }

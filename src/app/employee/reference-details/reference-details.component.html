@@ -15,15 +15,9 @@
           name="name"
           formControlName="name"
           autocomplete="off"
-          [ngClass]="{'has-error': hasError(reference+'.name')}" />
-        <span class="text-danger"
-              *ngIf="hasRequiredError(reference+'.name')">
-          Name is required
-        </span>
-        <span class="text-danger"
-              *ngIf="hasPatternError(reference+'.name')">
-          Only alphabets are allowed
-        </span>
+          [requiredErrorMessage]="'Name is required'"
+          [patternErrorMessage]="'Only alphabets are allowed'"
+          [appValidate]="referenceDetailsForm.get(reference + '.name')" />
       </div>
       <div class="col-xs-4 ">
         <label>Designation</label>
@@ -35,15 +29,9 @@
           name="designation"
           formControlName="designation"
           autocomplete="off"
-          [ngClass]="{'has-error': hasError(reference+'.designation')}" />
-        <span class="text-danger"
-              *ngIf="hasRequiredError(reference+'.designation')">
-          Designation is required
-        </span>
-        <span class="text-danger"
-              *ngIf="hasPatternError(reference+'.designation')">
-          Only alphabets are allowed
-        </span>
+          [requiredErrorMessage]="'Designation is required'"
+          [patternErrorMessage]="'Only alphabets are allowed'"
+          [appValidate]="referenceDetailsForm.get(reference + '.designation')" />
       </div>
       <div class="col-xs-4 ">
         <label>Organization Name</label>
@@ -55,15 +43,9 @@
           name="organization"
           formControlName="organization"
           autocomplete="off"
-          [ngClass]="{'has-error': hasError(reference+'.organization')}" />
-        <span class="text-danger"
-              *ngIf="hasRequiredError(reference+'.organization')">
-          Organization Name is required
-        </span>
-        <span class="text-danger"
-              *ngIf="hasPatternError(reference+'.organization')">
-          Only alphabets are allowed
-        </span>
+          [requiredErrorMessage]="'Organization Name is required'"
+          [patternErrorMessage]="'Only alphabets are allowed'"
+          [appValidate]="referenceDetailsForm.get(reference + '.organization')" />
       </div>
     </div>
     <div class="row form-group">
@@ -77,15 +59,9 @@
           name="number"
           formControlName="number"
           autocomplete="off"
-            [ngClass]="{'has-error': hasError(reference+'.number')}" />
-          <span class="text-danger"
-                *ngIf="hasRequiredError(reference+'.number')">
-            Contact Number is required
-          </span>
-          <span class="text-danger"
-                *ngIf="hasPatternError(reference+'.number')">
-            Only numbers are allowed
-          </span>
+          [requiredErrorMessage]="'Contact Number is required'"
+          [patternErrorMessage]="'Only numbers are allowed'"
+          [appValidate]="referenceDetailsForm.get(reference + '.number')" />
       </div>
       <div class="col-xs-4 ">
         <label>Email ID</label>
@@ -97,15 +73,9 @@
           name="email"
           formControlName="email"
           autocomplete="off"
-            [ngClass]="{'has-error': hasError(reference+'.email')}" />
-          <span class="text-danger"
-                *ngIf="hasRequiredError(reference+'.email')">
-            Email ID is required
-          </span>
-          <span class="text-danger"
-                *ngIf="hasPatternError(reference+'.email')">
-            Invalid format
-          </span>
+          [requiredErrorMessage]="'Email ID is required'"
+          [patternErrorMessage]="'Invalid format for Email ID'"
+          [appValidate]="referenceDetailsForm.get(reference + '.email')" />
       </div>
       <div class="col-xs-4 ">
         <label>Period of Acquaintance <small>(Example: Sept 07 to July 10)</small></label>
@@ -117,15 +87,9 @@
           name="period"
           formControlName="period"
           autocomplete="off"
-            [ngClass]="{'has-error': hasError(reference+'.period')}" />
-          <span class="text-danger"
-                *ngIf="hasRequiredError(reference+'.period')">
-            Period of Acquaintance is required
-          </span>
-          <span class="text-danger"
-                *ngIf="hasPatternError(reference+'.period')">
-            Only alphabets and numbers are allowed
-          </span>
+          [requiredErrorMessage]="'Period of Acquaintance is required'"
+          [patternErrorMessage]="'Only alphabets and numbers are allowed'"
+          [appValidate]="referenceDetailsForm.get(reference + '.period')" />
       </div>
     </div>
   </div>

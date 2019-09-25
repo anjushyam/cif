@@ -12,17 +12,11 @@
           id="nationality"
           name="nationality"
           pattern="[a-zA-Z ]*"
-          [formControlName]="'nationality'"
+          formControlName="nationality"
           autocomplete="off"
-          [ngClass]="{'has-error': (nationality.dirty || nationality.touched) && nationality.invalid}" />
-        <span class="text-danger"
-          *ngIf="(nationality.dirty || nationality.touched) && nationality.invalid && nationality.errors.required">
-          Nationality is required
-        </span>
-        <span class="text-danger"
-          *ngIf="(nationality.dirty || nationality.touched) && nationality.invalid && nationality.errors.pattern">
-          Only alphabets are allowed
-        </span>
+          [requiredErrorMessage]="'Nationality is required'"
+          [patternErrorMessage]="'Only alphabets are allowed'"
+          [appValidate]="idDetailsForm.get('nationality')" />
       </div>
       <div class="col-xs-6">
         <label for="passportNumber">Passport Number</label>
@@ -33,17 +27,11 @@
           id="passportNumber"
           name="passportNumber"
           pattern="[a-zA-Z0-9]*"
-          [formControlName]="'passportNumber'"
+          formControlName="passportNumber"
           autocomplete="off"
-          [ngClass]="{'has-error': (passportNumber.dirty || passportNumber.touched) && passportNumber.invalid}" />
-        <span class="text-danger"
-          *ngIf="(passportNumber.dirty || passportNumber.touched) && passportNumber.invalid && passportNumber.errors.required">
-          Passport Number is required
-        </span>
-        <span class="text-danger"
-          *ngIf="(passportNumber.dirty || passportNumber.touched) && passportNumber.invalid && passportNumber.errors.pattern">
-          Only alphabets & numbers are allowed
-        </span>
+          [requiredErrorMessage]="'Passport Number is required'"
+          [patternErrorMessage]="'Only alphabets and numbers are allowed'"
+          [appValidate]="idDetailsForm.get('passportNumber')" />
       </div>
     </div>
     <div class="row form-group">
@@ -56,17 +44,11 @@
           id="pan"
           name="pan"
           pattern="[a-zA-Z0-9]*"
-          [formControlName]="'pan'"
+          formControlName="pan"
           autocomplete="off"
-          [ngClass]="{'has-error': (pan.dirty || pan.touched) && pan.invalid}">
-        <span class="text-danger"
-          *ngIf="(pan.dirty || pan.touched) && pan.invalid && pan.errors.required">
-          PAN is required
-        </span>
-        <span class="text-danger"
-          *ngIf="(pan.dirty || pan.touched) && pan.invalid && pan.errors.pattern">
-          Only alphabets & numbers are allowed
-        </span>
+          [requiredErrorMessage]="'PAN is required'"
+          [patternErrorMessage]="'Only alphabets and numbers are allowed'"
+          [appValidate]="idDetailsForm.get('pan')" />
       </div>
       <div class="col-xs-6">
         <label for="nsrNumber">NASSCOM-NSR(NationalSkillsRegistry)ITPIN Number</label>
@@ -77,17 +59,11 @@
           id="nsrNumber"
           name="nsrNumber"
           pattern="[a-zA-Z0-9]*"
-          [formControlName]="'nsrNumber'"
+          formControlName="nsrNumber"
           autocomplete="off"
-          [ngClass]="{'has-error': (nsrNumber.dirty || nsrNumber.touched) && nsrNumber.invalid}">
-        <span class="text-danger"
-          *ngIf="(nsrNumber.dirty || nsrNumber.touched) && nsrNumber.invalid && nsrNumber.errors.required">
-          NASSCOM-NSR ITPIN Number is required
-        </span>
-        <span class="text-danger"
-          *ngIf="(nsrNumber.dirty || nsrNumber.touched) && nsrNumber.invalid && nsrNumber.errors.pattern">
-          Only alphabets & numbers are allowed
-        </span>
+          [requiredErrorMessage]="'NASSCOM-NSR ITPIN Number is required'"
+          [patternErrorMessage]="'Only alphabets and numbers are allowed'"
+          [appValidate]="idDetailsForm.get('nsrNumber')" />
       </div>
     </div>
   </div>

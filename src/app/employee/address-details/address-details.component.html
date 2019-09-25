@@ -23,15 +23,9 @@
           name="houseNumber"
           formControlName="houseNumber"
           autocomplete="off"
-          [ngClass]="{'has-error': hasError(addressType, 'houseNumber')}" />
-        <span class="text-danger"
-          *ngIf="hasRequiredError(addressType, 'houseNumber')">
-          House number is required
-        </span>
-        <span class="text-danger"
-          *ngIf="hasPatternError(addressType, 'houseNumber')">
-          Only alphabets and numbers are allowed
-        </span>
+          [requiredErrorMessage]="'House number is required'"
+          [patternErrorMessage]="'Only alphabets and numbers are allowed'"
+          [appValidate]="addressDetailsForm.get(addressType + '.houseNumber')" />
       </div>
       <div class="col-xs-4 ">
         <label for="street">Street</label>
@@ -44,15 +38,9 @@
           name="street"
           formControlName="street"
           autocomplete="off"
-          [ngClass]="{'has-error': hasError(addressType, 'street')}" />
-        <span class="text-danger"
-              *ngIf="hasRequiredError(addressType, 'street')">
-          Street is required
-        </span>
-        <span class="text-danger"
-              *ngIf="hasPatternError(addressType, 'street')">
-          Only alphabets and numbers are allowed
-        </span>
+          [requiredErrorMessage]="'Street is required'"
+          [patternErrorMessage]="'Only alphabets and numbers are allowed'"
+          [appValidate]="addressDetailsForm.get(addressType + '.street')" />
       </div>
       <div class="col-xs-4 ">
         <label for="city">City</label>
@@ -65,15 +53,9 @@
           name="city"
           formControlName="city"
           autocomplete="off"
-          [ngClass]="{'has-error': hasError(addressType, 'city')}" />
-        <span class="text-danger"
-              *ngIf="hasRequiredError(addressType, 'city')">
-          City is required
-        </span>
-        <span class="text-danger"
-              *ngIf="hasPatternError(addressType, 'city')">
-          Only alphabets are allowed
-        </span>
+          [requiredErrorMessage]="'City is required'"
+          [patternErrorMessage]="'Only alphabets are allowed'"
+          [appValidate]="addressDetailsForm.get(addressType + '.city')" />
       </div>
     </div>
     <div class="row form-group">
@@ -88,15 +70,9 @@
           name="state"
           formControlName="state"
           autocomplete="off"
-          [ngClass]="{'has-error': hasError(addressType, 'state')}" />
-        <span class="text-danger"
-              *ngIf="hasRequiredError(addressType, 'state')">
-          State is required
-        </span>
-        <span class="text-danger"
-              *ngIf="hasPatternError(addressType, 'state')">
-          Only alphabets are allowed
-        </span>
+          [requiredErrorMessage]="'State is required'"
+          [patternErrorMessage]="'Only alphabets are allowed'"
+          [appValidate]="addressDetailsForm.get(addressType + '.state')" />
       </div>
       <div class="col-xs-4 ">
         <label for="pinCode">Pin code</label>
@@ -109,15 +85,9 @@
           name="pinCode"
           formControlName="pinCode"
           autocomplete="off"
-          [ngClass]="{'has-error': hasError(addressType, 'pinCode')}" />
-        <span class="text-danger"
-              *ngIf="hasRequiredError(addressType, 'pinCode')">
-          Pincode is required
-        </span>
-        <span class="text-danger"
-              *ngIf="hasPatternError(addressType, 'pinCode')">
-          Only numbers are allowed
-        </span>
+          [requiredErrorMessage]="'Pincode is required'"
+          [patternErrorMessage]="'Only numbers are allowed'"
+          [appValidate]="addressDetailsForm.get(addressType + '.pinCode')" />
       </div>
       <div class="col-xs-4 ">
         <label for="landmark">Landmark</label>
@@ -130,15 +100,9 @@
           name="landmark"
           formControlName="landmark"
           autocomplete="off"
-          [ngClass]="{'has-error': hasError(addressType, 'landmark')}" />
-        <span class="text-danger"
-              *ngIf="hasRequiredError(addressType, 'landmark')">
-          Landmark is required
-        </span>
-        <span class="text-danger"
-              *ngIf="hasPatternError(addressType, 'landmark')">
-          Only alphabets and numbers are allowed
-        </span>
+          [requiredErrorMessage]="'Landmark is required'"
+          [patternErrorMessage]="'Only alphabets and numbers are allowed'"
+          [appValidate]="addressDetailsForm.get(addressType + '.landmark')" />
       </div>
     </div>
     <div class="row form-group">
@@ -153,15 +117,9 @@
           name="duration"
           formControlName="duration"
           autocomplete="off"
-          [ngClass]="{'has-error': hasError(addressType, 'duration')}" />
-        <span class="text-danger"
-              *ngIf="hasRequiredError(addressType, 'duration')">
-          Duration is required
-        </span>
-        <span class="text-danger"
-              *ngIf="hasPatternError(addressType, 'duration')">
-          Only alphabets and numbers are allowed
-        </span>
+          [requiredErrorMessage]="'Duration is required'"
+          [patternErrorMessage]="'Only alphabets and numbers are allowed'"
+          [appValidate]="addressDetailsForm.get(addressType + '.duration')" />
       </div>
       <div class="col-xs-4 ">
         <label for="telephone">Telephone</label>
@@ -174,15 +132,9 @@
           name="telephone"
           formControlName="telephone"
           autocomplete="off"
-          [ngClass]="{'has-error': hasError(addressType, 'telephone')}" />
-        <span class="text-danger"
-              *ngIf="hasRequiredError(addressType, 'telephone')">
-          Telephone is required
-        </span>
-        <span class="text-danger"
-              *ngIf="hasPatternError(addressType, 'telephone')">
-          Only numbers are allowed
-        </span>
+          [requiredErrorMessage]="'Telephone is required'"
+          [patternErrorMessage]="'Only numbers are allowed'"
+          [appValidate]="addressDetailsForm.get(addressType + '.telephone')" />
       </div>
     </div>
     <hr *ngIf="addressType === 'currentAddress'">

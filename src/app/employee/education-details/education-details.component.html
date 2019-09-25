@@ -22,7 +22,9 @@
               name="specializationName"
               formControlName="specializationName"
               placeholder="{{ specializationsText[specialization] }}"
-              [ngClass]="{'has-error': hasError(specialization, 'specializationName')}" />
+              [requiredErrorMessage]="'Required'"
+              [showErrorMessage]="false"
+              [appValidate]="educationalDetailsForm.get(specialization + '.telephone')" />
           </td>
           <td>
             <input
@@ -31,7 +33,9 @@
               class="table-input padding-one"
               name="institutionName"
               formControlName="institutionName"
-              [ngClass]="{'has-error': hasError(specialization, 'institutionName')}" />
+              [requiredErrorMessage]="'Required'"
+              [showErrorMessage]="false"
+              [appValidate]="educationalDetailsForm.get(specialization + '.institutionName')" />
           </td>
           <td>
             <input
@@ -40,7 +44,9 @@
               class="table-input padding-one"
               name="boardAffiliated"
               formControlName="boardAffiliated"
-              [ngClass]="{'has-error': hasError(specialization, 'boardAffiliated')}" />
+              [requiredErrorMessage]="'Required'"
+              [showErrorMessage]="false"
+              [appValidate]="educationalDetailsForm.get(specialization + '.boardAffiliated')" />
           </td>
           <td>
             <input
@@ -49,7 +55,9 @@
               class="table-input padding-one"
               name="registerNumber"
               formControlName="registerNumber"
-              [ngClass]="{'has-error': hasError(specialization, 'registerNumber')}" />
+              [requiredErrorMessage]="'Required'"
+              [showErrorMessage]="false"
+              [appValidate]="educationalDetailsForm.get(specialization + '.registerNumber')" />
           </td>
           <td>
             <input
@@ -58,8 +66,9 @@
               class="table-input padding-one"
               name="period"
               formControlName="period"
-              placeholder="yyyy-yyyy"
-              [ngClass]="{'has-error': hasError(specialization, 'period')}" />
+              [requiredErrorMessage]="'Required'"
+              [showErrorMessage]="false"
+              [appValidate]="educationalDetailsForm.get(specialization + '.period')" />
           </td>
           <td>
             <input
@@ -70,7 +79,9 @@
               name="passingYear"
               formControlName="passingYear"
               placeholder="yyyy"
-              [ngClass]="{'has-error': hasError(specialization, 'passingYear')}" />
+              [requiredErrorMessage]="'Required'"
+              [showErrorMessage]="false"
+              [appValidate]="educationalDetailsForm.get(specialization + '.passingYear')" />
           </td>
           <td>
             <input
@@ -82,7 +93,9 @@
               name="markScored"
               placeholder="eg: 82"
               formControlName="markScored"
-              [ngClass]="{'has-error': hasError(specialization, 'specializationName')}" />
+              [requiredErrorMessage]="'Required'"
+              [showErrorMessage]="false"
+              [appValidate]="educationalDetailsForm.get(specialization + '.markScored')" />
           </td>
         </tr>
       </tbody>

@@ -1,14 +1,14 @@
 import {Component, OnInit, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PersonalDetailsComponent } from './personal-details/personal-details.component';
-import { IdDetailsComponent } from './id-details/id-details.component';
-import { FamilyDetailsComponent } from './family-details/family-details.component';
-import { AddressDetailsComponent } from './address-details/address-details.component';
-import { EducationDetailsComponent } from './education-details/education-details.component';
-import { ReferenceDetailsComponent } from './reference-details/reference-details.component';
-import { AdditionalInformationComponent } from './additional-information/additional-information.component';
-import { EmergencyDetailsComponent } from './emergency-details/emergency-details.component';
-import { AuthorizationLetterComponent } from './authorization-letter/authorization-letter.component';
+import { PersonalDetailsComponent } from '@employee/personal-details/personal-details.component';
+import { IdDetailsComponent } from '@employee/id-details/id-details.component';
+import { FamilyDetailsComponent } from '@employee/family-details/family-details.component';
+import { AddressDetailsComponent } from '@employee/address-details/address-details.component';
+import { EducationDetailsComponent } from '@employee/education-details/education-details.component';
+import { ReferenceDetailsComponent } from '@employee/reference-details/reference-details.component';
+import { AdditionalInformationComponent } from '@employee/additional-information/additional-information.component';
+import { EmergencyDetailsComponent } from '@employee/emergency-details/emergency-details.component';
+import { AuthorizationLetterComponent } from '@employee/authorization-letter/authorization-letter.component';
 
 @Component({
   selector: 'app-employee',
@@ -99,13 +99,5 @@ export class EmployeeComponent implements OnInit, AfterViewInit {
 
   goToSection() {
     this.educationSection.nativeElement.scrollIntoView({behavior: 'smooth'});
-  }
-
-  get employeeName() {
-    return this.employeeFormGroup.get('employeeName');
-  }
-
-  get employeeId() {
-    return this.employeeFormGroup.get('employeeId');
   }
 }

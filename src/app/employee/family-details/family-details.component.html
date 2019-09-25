@@ -14,15 +14,9 @@
           pattern="[a-zA-Z ]*"
           formControlName="fatherName"
           autocomplete="off"
-          [ngClass]="{'has-error': (fatherName.dirty || fatherName.touched) && fatherName.invalid}" />
-        <span class="text-danger"
-          *ngIf="(fatherName.dirty || fatherName.touched) && fatherName.invalid && fatherName.errors.required">
-          Father's Name is required
-        </span>
-        <span class="text-danger"
-          *ngIf="(fatherName.dirty || fatherName.touched) && fatherName.invalid && fatherName.errors.pattern">
-          Only alphabets are allowed
-        </span>
+          [requiredErrorMessage]="'Father\'s Name is required'"
+          [patternErrorMessage]="'Only alphabets are allowed'"
+          [appValidate]="familyDetailsForm.get('fatherName')" />
       </div>
       <div class="col-xs-4">
         <label>Father's DOB</label>
@@ -33,7 +27,7 @@
           class="form-control"
           placeholder="yyyy-mm-dd"
           name="fatherDob"
-          [formControlName]="'fatherDob'"
+          formControlName="fatherDob"
           autocomplete="off"
           ngbDatepicker
           #fdob="ngbDatepicker"
@@ -41,11 +35,8 @@
           ng-readonly="true"
           [minDate]="{year: 1900, month: 01, day: 01}"
           [maxDate]="{year: 2000, month: 12, day: 31}"
-          [ngClass]="{'has-error': (fatherDob.dirty || fatherDob.touched) && fatherDob.invalid}" />
-        <span class="text-danger"
-          *ngIf="(fatherDob.dirty || fatherDob.touched) && fatherDob.invalid && fatherDob.errors.required">
-          Father's Date of birth is required
-        </span>
+          [requiredErrorMessage]="'Father\'s Date of birth is required'"
+          [appValidate]="familyDetailsForm.get('fatherDob')" />
       </div>
     </div>
     <div class="row form-group">
@@ -60,15 +51,9 @@
           pattern="[a-zA-Z ]*"
           formControlName="motherName"
           autocomplete="off"
-          [ngClass]="{'has-error': (motherName.dirty || motherName.touched) && motherName.invalid}" />
-        <span class="text-danger"
-          *ngIf="(motherName.dirty || motherName.touched) && motherName.invalid && motherName.errors.required">
-          Mother's Name is required
-        </span>
-        <span class="text-danger"
-          *ngIf="(motherName.dirty || motherName.touched) && motherName.invalid && motherName.errors.pattern">
-          Only alphabets are allowed
-        </span>
+          [requiredErrorMessage]="'Mother\'s Name is required'"
+          [patternErrorMessage]="'Only alphabets are allowed'"
+          [appValidate]="familyDetailsForm.get('motherName')" />
       </div>
       <div class="col-xs-4">
         <label>Mother's DOB</label>
@@ -79,7 +64,7 @@
           class="form-control"
           placeholder="yyyy-mm-dd"
           name="motherDob"
-          [formControlName]="'motherDob'"
+          formControlName="motherDob"
           autocomplete="off"
           ngbDatepicker
           #mdob="ngbDatepicker"
@@ -87,11 +72,8 @@
           ng-readonly="true"
           [minDate]="{year: 1900, month: 01, day: 01}"
           [maxDate]="{year: 2000, month: 12, day: 31}"
-          [ngClass]="{'has-error': (motherDob.dirty || motherDob.touched) && motherDob.invalid}" />
-        <span class="text-danger"
-          *ngIf="(motherDob.dirty || motherDob.touched) && motherDob.invalid && motherDob.errors.required">
-          Mother's Date of birth is required
-        </span>
+          [requiredErrorMessage]="'Mother\'s Date of birth is required'"
+          [appValidate]="familyDetailsForm.get('motherDob')" />
       </div>
     </div>
     <div class="row form-group">
@@ -106,15 +88,9 @@
           pattern="[a-zA-Z ]*"
           formControlName="spouseName"
           autocomplete="off"
-          [ngClass]="{'has-error': (spouseName.dirty || spouseName.touched) && spouseName.invalid}" />
-        <span class="text-danger"
-          *ngIf="(spouseName.dirty || spouseName.touched) && spouseName.invalid && spouseName.errors.required">
-          Spouse's Name is required
-        </span>
-        <span class="text-danger"
-          *ngIf="(spouseName.dirty || spouseName.touched) && spouseName.invalid && spouseName.errors.pattern">
-          Only alphabets are allowed
-        </span>
+          [requiredErrorMessage]="'Spouse\'s Name is required'"
+          [patternErrorMessage]="'Only alphabets are allowed'"
+          [appValidate]="familyDetailsForm.get('spouseName')" />
       </div>
       <div class="col-xs-4">
         <label>Spouse's DOB</label>
@@ -125,7 +101,7 @@
           class="form-control"
           placeholder="yyyy-mm-dd"
           name="spouseDob"
-          [formControlName]="'spouseDob'"
+          formControlName="spouseDob"
           autocomplete="off"
           ngbDatepicker
           #sdob="ngbDatepicker"
@@ -133,11 +109,8 @@
           ng-readonly="true"
           [minDate]="{year: 1900, month: 01, day: 01}"
           [maxDate]="{year: 2000, month: 12, day: 31}"
-          [ngClass]="{'has-error': (spouseDob.dirty || spouseDob.touched) && spouseDob.invalid}" />
-        <span class="text-danger"
-          *ngIf="(spouseDob.dirty || spouseDob.touched) && spouseDob.invalid && spouseDob.errors.required">
-          Date of birth is required
-        </span>
+          [requiredErrorMessage]="'Spouse\'s Date of birth is required'"
+          [appValidate]="familyDetailsForm.get('spouseDob')" />
       </div>
     </div>
     <div>
@@ -153,20 +126,9 @@
                 pattern="[a-zA-Z ]*"
                 formControlName="childName"
                 autocomplete="off"
-                [ngClass]="{'has-error':
-                (children.controls[i].get('childName').dirty  || children.controls[i].get('childName').touched)
-                && children.controls[i].get('childName').invalid
-                }" />
-              <span class="text-danger"
-                *ngIf="(children.controls[i].get('childName').dirty || children.controls[i].get('childName').touched)
-                && children.controls[i].get('childName').invalid && children.controls[i].get('childName').errors.required">
-                Child Name is required
-              </span>
-              <span class="text-danger"
-                *ngIf="(children.controls[i].get('childName').dirty || children.controls[i].get('childName').touched)
-                && children.controls[i].get('childName').invalid && children.controls[i].get('childName').errors.pattern">
-                Only alphabets are allowed
-              </span>
+                [requiredErrorMessage]="'Child\'s Name is required'"
+                [patternErrorMessage]="'Only alphabets are allowed'"
+                [appValidate]="child.get('childName')" />
             </div>
             <div class="col-xs-4">
               <label>Child {{ i+1 }} DOB</label>
@@ -182,15 +144,8 @@
                 (click)="cdob.open()"
                 ng-readonly="true"
                 [minDate]="{year: 2000, month: 01, day: 01}"
-                [ngClass]="{'has-error':
-                (children.controls[i].get('childDob').dirty || children.controls[i].get('childDob').touched)
-                && children.controls[i].get('childDob').invalid
-                }" />
-              <span class="text-danger"
-                *ngIf="(children.controls[i].get('childDob').dirty || children.controls[i].get('childDob').touched)
-                && children.controls[i].get('childDob').invalid && children.controls[i].get('childDob').errors.required">
-                Date of birth is required
-              </span>
+                [requiredErrorMessage]="'Child\'s Date of birth is required'"
+                [appValidate]="child.get('childDob')" />
             </div>
             <div class="col-xs-1">
               <label></label>

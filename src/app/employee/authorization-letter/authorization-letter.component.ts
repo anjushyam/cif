@@ -18,16 +18,4 @@ export class AuthorizationLetterComponent implements OnInit {
       date: ['', Validators.required]
     });
   }
-
-  get fullName() {
-    return this.authorizationLetterForm.get('fullName');
-  }
-
-  get signature() {
-    return this.authorizationLetterForm.get('signature');
-  }
-
-  get date() {
-    return this.authorizationLetterForm.get('date');
-  }
 }

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from '@app/header/header.component';
@@ -20,6 +22,12 @@ import { EmploymentDetailsComponent } from '@employee/employment-details/employm
 import { AddressDetailsComponent } from '@employee/address-details/address-details.component';
 import { PreviewDetailsComponent } from '@employee/preview-details/preview-details.component';
 import { ValidateDirective } from '@app/directive/validate.directive';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+const appRoutes: Routes = [
+  {path: '', component: EmployeeComponent},
+  {path: 'dashboard', component: DashboardComponent}
+  ];
 
 @NgModule({
   declarations: [
@@ -38,13 +46,16 @@ import { ValidateDirective } from '@app/directive/validate.directive';
     EmploymentDetailsComponent,
     AddressDetailsComponent,
     PreviewDetailsComponent,
-    ValidateDirective
+    ValidateDirective,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

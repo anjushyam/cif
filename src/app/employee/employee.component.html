@@ -1,66 +1,77 @@
-<form [formGroup]="employeeFormGroup" enctype="multipart/form-data">
-  <div class="row section-container">
-    <div class="row">
-      <div class="avatar-centered text-center">
-        <input class="hidden"
-          #uploader
-          type="file"
-          draggable="true"
-          accept="image/*"
-          (change)="showPreview($event)" />
-        <div class="avatar-block"
-          (click)="uploader.click()"
-          (dragover)="allowDrop($event)">
+<div class="cif-form-container">
+  <app-header></app-header>
+  <div>
+    <div class="row text-center">
+      <h4>Devon Software Service Pvt. Ltd.</h4>
+      <h2>CANDIDATE INFORMATION FORM</h2>
+      <h2>(CIF)</h2>
+    </div>
+    <form [formGroup]="employeeFormGroup" enctype="multipart/form-data">
+      <div class="row section-container">
+        <div class="row">
+          <div class="avatar-centered text-center">
+            <input class="hidden"
+                   #uploader
+                   type="file"
+                   draggable="true"
+                   accept="image/*"
+                   (change)="showPreview($event)" />
+            <div class="avatar-block"
+                 (click)="uploader.click()"
+                 (dragover)="allowDrop($event)">
           <span class="avatar-container" *ngIf="imageURL && imageURL !== ''; else imageText">
             <img class="avatar" [src]="imageURL" [alt]="employeeFormGroup.value.name">
           </span>
-          <ng-template #imageText>
-            <span class="avatar-placeholder">Photograph</span></ng-template>
+              <ng-template #imageText>
+                <span class="avatar-placeholder">Photograph</span></ng-template>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row form-group">
+            <label for="employeeName">Employee Name</label>
+            <input
+              required
+              type="text"
+              class="form-control"
+              id="employeeName"
+              name="employeeName"
+              pattern="[a-zA-Z ]*"
+              formControlName="employeeName"
+              autocomplete="off"
+              [requiredErrorMessage]="'Employee Name is required'"
+              [patternErrorMessage]="'Only alphabets are allowed'"
+              [appValidate]="employeeFormGroup.get('employeeName')" />
+          </div>
+          <div class="row form-group">
+            <label for="employeeId">Employee ID</label>
+            <input
+              required
+              type="text"
+              class="form-control"
+              id="employeeId"
+              name="employeeId"
+              pattern="[a-zA-Z0-9]*"
+              formControlName="employeeId"
+              autocomplete="off"
+              [requiredErrorMessage]="'Employee ID is required'"
+              [patternErrorMessage]="'Only alphabets and numbers are allowed'"
+              [appValidate]="employeeFormGroup.get('employeeId')" />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-xs-6">
-      <div class="row form-group">
-        <label for="employeeName">Employee Name</label>
-        <input
-          required
-          type="text"
-          class="form-control"
-          id="employeeName"
-          name="employeeName"
-          pattern="[a-zA-Z ]*"
-          formControlName="employeeName"
-          autocomplete="off"
-          [requiredErrorMessage]="'Employee Name is required'"
-          [patternErrorMessage]="'Only alphabets are allowed'"
-          [appValidate]="employeeFormGroup.get('employeeName')" />
-      </div>
-      <div class="row form-group">
-        <label for="employeeId">Employee ID</label>
-        <input
-          required
-          type="text"
-          class="form-control"
-          id="employeeId"
-          name="employeeId"
-          pattern="[a-zA-Z0-9]*"
-          formControlName="employeeId"
-          autocomplete="off"
-          [requiredErrorMessage]="'Employee ID is required'"
-          [patternErrorMessage]="'Only alphabets and numbers are allowed'"
-          [appValidate]="employeeFormGroup.get('employeeId')" />
-      </div>
-    </div>
+      <app-personal-details></app-personal-details>
+      <app-id-details></app-id-details>
+      <app-family-details></app-family-details>
+      <app-address-details></app-address-details>
+      <app-education-details #educationSection></app-education-details>
+      <app-employment-details [employeeFormGroup]="employeeFormGroup"></app-employment-details>
+      <app-reference-details></app-reference-details>
+      <app-additional-information></app-additional-information>
+      <app-emergency-details></app-emergency-details>
+      <app-authorization-letter></app-authorization-letter>
+      <app-preview-details [imageURL]="imageURL" (employeeEvent)="goToSection()" [employeeFormGroup]="employeeFormGroup"></app-preview-details>
+    </form>
   </div>
-  <app-personal-details></app-personal-details>
-  <app-id-details></app-id-details>
-  <app-family-details></app-family-details>
-  <app-address-details></app-address-details>
-  <app-education-details #educationSection></app-education-details>
-  <app-employment-details [employeeFormGroup]="employeeFormGroup"></app-employment-details>
-  <app-reference-details></app-reference-details>
-  <app-additional-information></app-additional-information>
-  <app-emergency-details></app-emergency-details>
-  <app-authorization-letter></app-authorization-letter>
-  <app-preview-details [imageURL]="imageURL" (employeeEvent)="goToSection()" [employeeFormGroup]="employeeFormGroup"></app-preview-details>
-</form>
+  <app-footer></app-footer>
+</div>

@@ -1,4 +1,4 @@
-<div class="row preview-section-container">
+<!-- <div class="row preview-section-container">
   <ng-template #candidateDetails let-modal>
     <div class="modal-header">
       <a href="https://www.devon.nl">
@@ -591,6 +591,10 @@
   <button type="button"
           class="btn btn-outline-primary mb-2 mr-2"
           (click)="openPreview(candidateDetails)"
+          [disabled]="employeeFormGroup.invalid"
           >Preview</button>
-<!--          [disabled]="employeeFormGroup.invalid"-->
-</div>
+</div> -->
+<button type="submit"
+          class="btn btn-outline-primary mb-2 mr-2"
+          (click)="addEmployee()"
+          >Submit</button>

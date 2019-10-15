@@ -1,27 +1,20 @@
+import { FormControl, FormGroup } from '@angular/forms';
+import { PersonalDetails } from './personal-details/personal-details.model';
+
 export class Employee {
-  // public empName: string;
-  // public empId: string;
+  public employeeName;
+  public employeeId;
+  public personalDetails;
 
-  constructor(init?: Partial<Employee>) {
-    Object.assign(this, init);
+  // constructor(init?: Partial<Employee>) {
+  //   Object.assign(this, init);
+  // }
+
+  constructor() {
+    this.employeeName = new FormControl();
+    //  this.employeeName.setValidators([Validators.required])
+    this.employeeId = new FormControl();
+    this.personalDetails = new FormGroup({});
   }
-
-  // constructor() {}
-
-  // get employeeName(): string {
-  //   return this.empName;
-  // }
-  //
-  // set employeeName(val: string) {
-  //   this.empName = val;
-  // }
-  //
-  // get employeeId(): string {
-  //   return this.empId;
-  // }
-  //
-  // set employeeId(val: string) {
-  //   this.empId = val;
-  // }
 
 }

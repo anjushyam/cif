@@ -12,7 +12,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class PreviewDetailsComponent implements OnInit {
   @Input() employeeFormGroup: FormGroup;
   @Input() imageURL: string;
-  employee: Employee = new Employee();
+  //employee: Employee = new Employee();
   @Output() employeeEvent = new EventEmitter();
 
   constructor(private modalService: NgbModal) { }
@@ -22,8 +22,8 @@ export class PreviewDetailsComponent implements OnInit {
 
   addEmployee() {
     // if (this.employeeFormGroup.valid) {
-      this.employee = new Employee(this.employeeFormGroup.value);
-      console.log(this.employee);
+      //this.employee = new Employee(this.employeeFormGroup.value);
+      console.log(this.employeeFormGroup.value);
     // }
   }
 

@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\node_modules\\@ng-bootstrap\\ng-bootstrap",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\employee",
+    "\\src\\app\\employee\\personal-details"
+  ],
+  "SelectedNode": "\\src\\app\\employee\\personal-details\\personal-details.component.ts",
+  "PreviewInSolutionExplorer": false
+}

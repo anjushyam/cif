@@ -22,7 +22,7 @@ import { EmploymentDetailsComponent } from '@employee/employment-details/employm
 import { AddressDetailsComponent } from '@employee/address-details/address-details.component';
 import { PreviewDetailsComponent } from '@employee/preview-details/preview-details.component';
 import { ValidateDirective } from '@app/directive/validate.directive';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from '@app/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   {path: '', component: EmployeeComponent},

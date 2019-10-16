@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { PersonalDetails } from './personal-details.model';
+import { PersonalDetails } from '@employee/personal-details/personal-details.model';
 
 @Component({
   selector: 'app-personal-details',

@@ -66,9 +66,9 @@
       <app-address-details></app-address-details>
       <app-education-details #educationSection></app-education-details>
       <app-employment-details [employeeFormGroup]="employeeFormGroup"></app-employment-details>
-      <app-reference-details></app-reference-details>
-      <app-additional-information></app-additional-information>
-      <app-emergency-details></app-emergency-details>
+      <app-reference-details></app-reference-details> -->
+      <app-additional-information [employeeFormGroup]="employeeFormGroup"></app-additional-information>
+      <!-- <app-emergency-details></app-emergency-details>
       <app-authorization-letter></app-authorization-letter> -->
       <app-preview-details [imageURL]="imageURL" (employeeEvent)="goToSection()" [employeeFormGroup]="employeeFormGroup"></app-preview-details>
     </form>
